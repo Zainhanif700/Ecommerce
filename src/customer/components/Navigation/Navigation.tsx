@@ -25,7 +25,7 @@ import MenuItem from '@mui/material/MenuItem'
 import { useLocation, useNavigate } from 'react-router-dom'
 import AuthModal from '../../Auth/AuthModel'
 import { useDispatch, useSelector } from 'react-redux'
-import { register, getUser } from "../../../State/Auth/Action.js";
+import { getUser } from "../../../State/Auth/Action.js";
 import { logout } from '../../../State/Auth/Action.js';
 
 const navigation = {
@@ -152,8 +152,8 @@ const navigation = {
 }
 
 export default function Example() {
-  const [open, setOpen] = useState(false)
   /* React State */
+  const [open, setOpen] = useState(false)
   const jwt = localStorage.getItem("jwt");
   const { auth } = useSelector(store => store);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -189,9 +189,8 @@ export default function Example() {
     handleCloseUserMenu();
   };
 
-  const handleCategoryClick = (category: any, section: any, item: any, close: any) => {
+  const handleCategoryClick = (category: any, section: any, item: any) => {
     navigate(`/${category.id}/${section.id}/${item.name}`);
-    close();
   };
 
   useEffect(() => {
@@ -352,7 +351,7 @@ export default function Example() {
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
                 <a href="/">
-                  <span className="sr-only">Your Company</span>
+                  <span className="sr-only">Company</span>
                   <img
                     alt=""
                     src="https://res.cloudinary.com/ddkso1wxi/image/upload/v1675919455/Logo/Copy_of_Zosh_Academy_nblljp.png"
@@ -366,73 +365,98 @@ export default function Example() {
                 <div className="flex h-full space-x-8">
                   {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
-                      <div className="relative flex">
-                        <PopoverButton className={
-                          classNames(
-                            open ? "border-indigo-600 text-indigo-600"
-                              : 'border-transparent text-gray-700 hover:text-gray-800',
-                            '"relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-[open]:border-indigo-600 data-[open]:text-indigo-600"'
-                          )
-                        }>
-                          {category.name}
-                        </PopoverButton>
-                      </div>
+                      {({ open, close }) => ( // Render-prop pattern to access 'close'
+                        <>
+                          <div className="relative flex">
+                            <Popover.Button
+                              className={classNames(
+                                open
+                                  ? "border-indigo-600 text-indigo-600"
+                                  : "border-transparent text-gray-700 hover:text-gray-800",
+                                "relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800"
+                              )}
+                            >
+                              {category.name}
+                            </Popover.Button>
+                          </div>
 
-                      <PopoverPanel
-                        transition
-                        className="absolute inset-x-0 top-full text-sm text-gray-500" style={{ zIndex: 10 }}
-                      >
-                        {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-                        <div aria-hidden="true" className="absolute inset-0 top-1/2 bg-white shadow" />
+                          <Popover.Panel
+                            transition
+                            className="absolute inset-x-0 top-full text-sm text-gray-500"
+                            style={{ zIndex: 10 }}
+                          >
+                            <div
+                              aria-hidden="true"
+                              className="absolute inset-0 top-1/2 bg-white shadow"
+                            />
 
-                        <div className="relative bg-white">
-                          <div className="mx-auto max-w-7xl px-8">
-                            <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
-                              <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                                {category.featured.map((item) => (
-                                  <div key={item.name} className="group relative text-base sm:text-sm">
-                                    <img
-                                      alt={item.imageAlt}
-                                      src={item.imageSrc}
-                                      className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75"
-                                    />
-                                    <a href={item.href} className="mt-6 block font-medium text-gray-900">
-                                      <span aria-hidden="true" className="absolute inset-0 z-10" />
-                                      {item.name}
-                                    </a>
-                                    <p aria-hidden="true" className="mt-1">
-                                      Shop now
-                                    </p>
+                            <div className="relative bg-white">
+                              <div className="mx-auto max-w-7xl px-8">
+                                <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
+                                  <div className="col-start-2 grid grid-cols-2 gap-x-8">
+                                    {category.featured.map((item) => (
+                                      <div
+                                        key={item.name}
+                                        className="group relative text-base sm:text-sm"
+                                      >
+                                        <img
+                                          alt={item.imageAlt}
+                                          src={item.imageSrc}
+                                          className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75"
+                                        />
+                                        <a
+                                          href={item.href}
+                                          className="mt-6 block font-medium text-gray-900"
+                                        >
+                                          <span
+                                            aria-hidden="true"
+                                            className="absolute inset-0 z-10"
+                                          />
+                                          {item.name}
+                                        </a>
+                                        <p aria-hidden="true" className="mt-1">
+                                          Shop now
+                                        </p>
+                                      </div>
+                                    ))}
                                   </div>
-                                ))}
-                              </div>
-                              <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                                {category.sections.map((section) => (
-                                  <div key={section.name}>
-                                    <p id={`${section.name}-heading`} className="font-medium text-gray-900">
-                                      {section.name}
-                                    </p>
-                                    <ul
-                                      role="list"
-                                      aria-labelledby={`${section.name}-heading`}
-                                      className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                                    >
-                                      {section.items.map((item) => (
-                                        <li key={item.name} className="flex">
-                                          <p onClick={() => handleCategoryClick(category, section, item, close)}
-                                            className="cursor-pointer hover:text-gray-800">
-                                            {item.name}
-                                          </p>
-                                        </li>
-                                      ))}
-                                    </ul>
+                                  <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
+                                    {category.sections.map((section) => (
+                                      <div key={section.name}>
+                                        <p
+                                          id={`${section.name}-heading`}
+                                          className="font-medium text-gray-900"
+                                        >
+                                          {section.name}
+                                        </p>
+                                        <ul
+                                          role="list"
+                                          aria-labelledby={`${section.name}-heading`}
+                                          className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
+                                        >
+                                          {section.items.map((item) => (
+                                            <li key={item.name} className="flex">
+                                              <p
+                                                onClick={() => {
+                                                  handleCategoryClick(category, section, item);
+                                                  close(); // Close the popover
+                                                }}
+                                                className="cursor-pointer hover:text-gray-800"
+                                              >
+                                                {item.name}
+                                              </p>
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    ))}
                                   </div>
-                                ))}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                      </PopoverPanel>
+                          </Popover.Panel>
+                        </>
+                      )}
                     </Popover>
                   ))}
 
@@ -447,6 +471,7 @@ export default function Example() {
                   ))}
                 </div>
               </PopoverGroup>
+
 
               <div className="ml-auto flex items-center">
                 <div className="flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
@@ -495,7 +520,6 @@ export default function Example() {
                       aria-hidden="true"
                       className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
                     />
-                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">2</span>
                     <span className="sr-only">items in cart, view bag</span>
                   </a>
                 </div>
