@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { StarIcon } from '@heroicons/react/20/solid'
+import { useEffect, useState } from 'react'
 import { Radio, RadioGroup } from '@headlessui/react'
 import Rating from '@mui/material/Rating'
 import Button from '@mui/material/Button'
@@ -9,9 +8,12 @@ import Box from '@mui/material/Box'
 import LinearProgress from '@mui/material/LinearProgress'
 import { mens_kurta } from '../../Data/mens_kurta'
 import HomeSectionCard from '../HomeSectionCard/HomeSectionCard'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { addItemToCart } from '../../../State/Cart/Action.js'
+import { findProductsById } from '../../../State/Product/Action.js';
 
-const product = {
+const products = {
     name: 'Basic Tee 6-Pack',
     price: '$192',
     href: '#',
@@ -65,20 +67,31 @@ function classNames(...classes: any) {
     return classes.filter(Boolean).join(' ')
 }
 
-
 export default function ProductDetails() {
-    const [selectedSize, setSelectedSize] = useState(product.sizes[2])
-    const navigate = useNavigate(); 
+    const dispatch = useDispatch();
+    const { product } = useSelector(store => store);
+    const navigate = useNavigate();
+    const params = useParams();
+
+    const [selectedSize, setSelectedSize] = useState()
 
     const handleAddToCart = () => {
+        const data = {productId: params.productId, size: selectedSize?.name}
+        dispatch(addItemToCart(data))
         navigate('/cart')
-    } 
+    }
+
+    useEffect(() => {
+        const data = { productId: params.productId }
+        dispatch(findProductsById(data))
+    }, [params.productId])
+
     return (
         <div className="bg-white lg:px-20">
             <div className="pt-6">
                 <nav aria-label="Breadcrumb">
                     <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-                        {product.breadcrumbs.map((breadcrumb) => (
+                        {products.breadcrumbs.map((breadcrumb) => (
                             <li key={breadcrumb.id}>
                                 <div className="flex items-center">
                                     <a href={breadcrumb.href} className="mr-2 text-sm font-medium text-gray-900">
@@ -110,13 +123,13 @@ export default function ProductDetails() {
                     <div className="flex flex-col items-center">
                         <div className="overflow-hidden rounded-lg max-w-[30rem] max-h-[35rem]">
                             <img
-                                alt={product.images[0].alt}
-                                src={product.images[0].src}
+                                alt={"Image of Product"}
+                                src={product.product?.imageUrl}
                                 className="h-full w-full object-cover object-center"
                             />
                         </div>
                         <div className="flex flex-wrap space-x-5 justify-center">
-                            {product.images.map((image) =>
+                            {products.images.map((image) =>
                                 <div className='aspect-h-2 aspect-w-3 overflow-hidden rounded-lg max-w-[5rem] max-h-[5rem] mt-4'>
                                     <img
                                         alt={image.alt}
@@ -132,8 +145,8 @@ export default function ProductDetails() {
                     {/* Product info */}
                     <div className="lg:col-span-1 max-auto max-w-2xl px-4 pb-16 sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-24">
                         <div className="lg:col-span-2 ">
-                            <h1 className="text-lg lg:text-xl font-semibold text-gray-900">{product.name}</h1>
-                            <h1 className="text-lg lg:text-xl text-gray-900 opacity-60 pt-1">{product.name}</h1>
+                            <h1 className="text-lg lg:text-xl font-semibold text-gray-900">{product.product?.brand}</h1>
+                            <h1 className="text-lg lg:text-xl text-gray-900 opacity-60 pt-1">{product.product?.title}</h1>
                         </div>
 
                         {/* Options */}
@@ -141,13 +154,13 @@ export default function ProductDetails() {
                             <h2 className="sr-only">Product information</h2>
                             <div className='flex space-x-5 items-center text-lg lg:text-xl text-gray-900 mt-6'>
                                 <p className='font-semibold'>
-                                    $199
+                                    {product.product?.discountedPrice}
                                 </p>
                                 <p className='opacity-50 line-through'>
-                                    $205
+                                    {product.product?.price}
                                 </p>
                                 <p className='text-green-600 font-semibold'>
-                                    5%
+                                    {product.product?.discountedPersent}%
                                 </p>
                             </div>
 
@@ -155,7 +168,7 @@ export default function ProductDetails() {
                             <div className="mt-6">
                                 <div className='flex items-center space-x-3'>
                                     <Rating name="read-only" value={5.5} readOnly />
-                                    <p className='opacity-50 text-sm'>5765763 Ratings</p>
+                                    <p className='opacity-50 text-sm'>763 Ratings</p>
                                     <p className='ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-600'>538703 Reviews</p>
                                 </div>
                             </div>
@@ -175,7 +188,7 @@ export default function ProductDetails() {
                                             onChange={setSelectedSize}
                                             className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4"
                                         >
-                                            {product.sizes.map((size) => (
+                                            {products.sizes.map((size) => (
                                                 <Radio
                                                     key={size.name}
                                                     value={size}
@@ -235,7 +248,7 @@ export default function ProductDetails() {
 
                                 <div className="mt-4">
                                     <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-                                        {product.highlights.map((highlight) => (
+                                        {products.highlights.map((highlight) => (
                                             <li key={highlight} className="text-gray-400">
                                                 <span className="text-gray-600">{highlight}</span>
                                             </li>
@@ -325,10 +338,10 @@ export default function ProductDetails() {
                 </section>
 
                 <section className='pt-10'>
-                   <h1 className='py-5 text-xl font-bold'> Similar Products</h1>
-                   <div className='flex flex-wrap '> 
-                    {mens_kurta?.slice(0, 10)?.map((item, index) => <HomeSectionCard product={item} key={index} />)}
-                   </div>
+                    <h1 className='py-5 text-xl font-bold'> Similar Products</h1>
+                    <div className='flex flex-wrap '>
+                        {mens_kurta?.slice(0, 10)?.map((item, index) => <HomeSectionCard product={item} key={index} />)}
+                    </div>
                 </section>
             </div>
         </div>

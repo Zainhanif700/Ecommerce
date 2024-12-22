@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import {
   Dialog,
   DialogBackdrop,
@@ -22,7 +22,11 @@ import { deepPurple } from '@mui/material/colors'
 import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import AuthModal from '../../Auth/AuthModel'
+import { useDispatch, useSelector } from 'react-redux'
+import { register, getUser } from "../../../State/Auth/Action.js";
+import { logout } from '../../../State/Auth/Action.js';
 
 const navigation = {
   categories: [
@@ -150,10 +154,14 @@ const navigation = {
 export default function Example() {
   const [open, setOpen] = useState(false)
   /* React State */
+  const jwt = localStorage.getItem("jwt");
+  const { auth } = useSelector(store => store);
   const [anchorEl, setAnchorEl] = useState(null);
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const openUserMenu = Boolean(anchorEl);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const location = useLocation();
 
   /* React Functions */
   function classNames(...classes: (string | undefined | false)[]) {
@@ -163,26 +171,47 @@ export default function Example() {
   const handleUserClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleCloseUserMenu = (event: any) => {
+
+  const handleCloseUserMenu = () => {
     setAnchorEl(null);
   };
 
   const handleOpen = () => {
     setOpenAuthModal(true);
   };
+
   const handleClose = () => {
     setOpenAuthModal(false);
   };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    handleCloseUserMenu();
+  };
+
   const handleCategoryClick = (category: any, section: any, item: any, close: any) => {
     navigate(`/${category.id}/${section.id}/${item.name}`);
     close();
   };
 
+  useEffect(() => {
+    if (jwt)
+      dispatch(getUser(jwt));
+  }, [jwt, auth.jwt])
+
+  useEffect(() => {
+    if (auth.user != null)
+      handleClose();
+
+    if (location.pathname === "/login" || location.pathname === "/register")
+      navigate(-1);
+
+  }, [auth.user])
 
   return (
     <div className="bg-white pb-10">
       {/* Mobile menu */}
-      <Dialog open={open} onClose={setOpen} className="relative -z-40 lg:hidden">
+      <Dialog open={open} onClose={setOpen} className="relative z-40 lg:hidden">
         <DialogBackdrop
           transition
           className="fixed inset-0 bg-black/25 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
@@ -305,7 +334,7 @@ export default function Example() {
 
       <header className="relative bg-white">
         <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          Get free delivery on orders over $100
+          LowTech GmbH
         </p>
 
         <nav aria-label="Top" className="mx-auto">
@@ -420,8 +449,8 @@ export default function Example() {
               </PopoverGroup>
 
               <div className="ml-auto flex items-center">
-                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  {true ? (
+                <div className="flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                  {auth?.user?.firstName ? (
                     <div>
                       <Avatar
                         className="text-white"
@@ -434,7 +463,7 @@ export default function Example() {
                           color: "white",
                           cursor: "pointer"
                         }}>
-                        R
+                        {auth?.user?.firstName[0].toUpperCase()}
                       </Avatar>
 
                       <Menu
@@ -447,8 +476,8 @@ export default function Example() {
                         }}
                       >
                         <MenuItem onClick={handleCloseUserMenu}>Profile</MenuItem>
-                        <MenuItem onClick={()=>{navigate('/account/order')}}>My Orders</MenuItem>
-                        <MenuItem>Logout</MenuItem>
+                        <MenuItem onClick={() => { navigate('/account/order') }}>My Orders</MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
                       </Menu>
                     </div>
                   ) : (
@@ -459,22 +488,14 @@ export default function Example() {
                   }
                 </div>
 
-                {/* Search */}
-                <div className="flex lg:ml-6">
-                  <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
-                    <span className="sr-only">Search</span>
-                    <MagnifyingGlassIcon aria-hidden="true" className="size-6" />
-                  </a>
-                </div>
-
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <a href="#" className="group -m-2 flex items-center p-2">
+                  <a href="/cart" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       aria-hidden="true"
                       className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
                     />
-                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
+                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">2</span>
                     <span className="sr-only">items in cart, view bag</span>
                   </a>
                 </div>
@@ -483,6 +504,8 @@ export default function Example() {
           </div>
         </nav>
       </header>
+
+      <AuthModal handleClose={handleClose} open={openAuthModal} />
     </div >
   )
 }

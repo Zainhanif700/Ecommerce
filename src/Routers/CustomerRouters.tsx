@@ -17,6 +17,8 @@ function CustomerRouters() {
                 <Navigation />
             </div>
             <Routes>
+                <Route path='/login' element={<HomePage />}></Route>
+                <Route path='/register' element={<HomePage />}></Route>
                 <Route path='/' element={<HomePage />}></Route>
                 <Route path='/:levelOne/:levelTwo/:levelThree/' element={<Product />}></Route>
                 <Route path='/product/:productId' element={<ProductDetails />}></Route>
@@ -25,9 +27,9 @@ function CustomerRouters() {
                 <Route path='/account/order' element={<Order />}></Route>
                 <Route path='/account/order/:orderID' element={<OrderDetails />}></Route>
 
-        {/* <Checkout /> */}
-        {/* <Order/> */}
-        {/* <OrderDetails /> */}
+                {/* <Checkout /> */}
+                {/* <Order/> */}
+                {/* <OrderDetails /> */}
             </Routes>
             <div className="pt-10">
                 <Footer />
