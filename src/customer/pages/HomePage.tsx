@@ -1,6 +1,6 @@
 import MainCarousel from "../components/HomeCarousel/MainCarousel"
 import HomeSectionCarousel from "../components/HomeSectionCarousel/HomeSectionCarousel"
-import { mens_kurta } from '../Data/mens_kurta.tsx';
+import { mens_kurta } from '../Data/mens_kurta';
 
 function HomePage() {
 

@@ -68,7 +68,7 @@ function classNames(...classes: any) {
 
 export default function ProductDetails() {
     const dispatch = useDispatch();
-    const { product } = useSelector(store => store);
+    const { product } = useSelector((store: any) => store);
     const navigate = useNavigate();
     const params = useParams();
 

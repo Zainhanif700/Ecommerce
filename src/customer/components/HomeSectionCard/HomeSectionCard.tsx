@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom"
 
 const HomeSectionCard = ({ product, keys }: { product: any, keys: any }) => {
   const navigate = useNavigate();
-  console.log(keys)
   return (
     <>
       <div onClick={() => { navigate(`/product/${keys}`); console.log(keys) }} className='productCard w-[15rem] m-3 transition-all cursor-pointer'>

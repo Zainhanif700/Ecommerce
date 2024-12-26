@@ -185,7 +185,7 @@ function CreateProductForm() {
               <InputLabel>Third Level Category</InputLabel>
               <Select
                 name='thirdLavelCategory'
-                value={productData.thirdLavelCategoryy}
+                value={productData.thirdLavelCategory}
                 onChange={handleChange}
                 label='Third Level Category'
               >

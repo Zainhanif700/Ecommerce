@@ -10,7 +10,7 @@ import { createPayment } from '../../../State/Payment/Action.js';
 function OrderSummary() {
 
   const dispatch = useDispatch();
-  const { order } = useSelector(store => store)
+  const { order } = useSelector((store: any) => store)
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const orderId = searchParams.get("order_id");
@@ -37,7 +37,7 @@ function OrderSummary() {
       <div>
         <div className="lg:grid py-2 grid-cols-3 relative">
           <div className="col-span-2">
-            {order?.orders?.orderItem?.map((item) => <CartItem item={item} summary={true}/>)}
+            {order?.orders?.orderItem?.map((item:any) => <CartItem item={item} summary={true}/>)}
           </div>
           <div className="px-5 sticky top-0 h-[100vh] mt-5 lg:mt-0">
             <div className="border mb-4">

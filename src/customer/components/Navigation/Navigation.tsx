@@ -152,8 +152,8 @@ const navigation = {
 export default function Example() {
   /* React State */
   const [open, setOpen] = useState(false)
-  const jwt = localStorage.getItem("jwt");
-  const { auth } = useSelector(store => store);
+  const jwt = localStorage?.getItem("jwt");
+  const { auth } = useSelector((store:any) => store);
   const [anchorEl, setAnchorEl] = useState(null);
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const openUserMenu = Boolean(anchorEl);
@@ -191,19 +191,21 @@ export default function Example() {
     navigate(`/${category.id}/${section.id}/${item.name}`);
   };
 
+  console.log('auth: ', auth)
+
   useEffect(() => {
     if (jwt)
       dispatch(getUser(jwt));
-  }, [jwt, auth.jwt])
+  }, [jwt, auth?.jwt])
 
   useEffect(() => {
-    if (auth.user != null)
+    if (auth?.user != null)
       handleClose();
 
     if (location.pathname === "/login" || location.pathname === "/register")
       navigate(-1);
 
-  }, [auth.user])
+  }, [auth?.user])
 
   return (
     <div className="bg-white pb-10">

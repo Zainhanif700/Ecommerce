@@ -1,11 +1,11 @@
-import { Avatar, Button, Card, CardHeader, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import { Avatar, Card, CardHeader, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { findProducts, deleteProductsById } from '../../State/Product/Action.js';
+import { findProducts } from '../../State/Product/Action.js';
 
 const ProductTableView = () => {
   const dispatch = useDispatch();
-  const { product } = useSelector(store => store);
+  const { product } = useSelector((state:any) => state);
 
   useEffect(() => {
     const data = {
@@ -39,7 +39,7 @@ const ProductTableView = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {product.products?.content?.slice(0,5)?.map((row) => (
+              {product.products?.content?.slice(0,5)?.map((row:any) => (
                 <TableRow
                   key={row?.id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

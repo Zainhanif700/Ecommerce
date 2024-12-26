@@ -13,9 +13,8 @@ import { navigation } from "../../../config/navigationMenu";
 import AuthModal from "../Auth/AuthModal";
 import { useDispatch, useSelector } from "react-redux";
 import { deepPurple } from "@mui/material/colors";
-import { getUser, logout } from "../../../Redux/Auth/Action";
-import { getCart } from "../../../Redux/Customers/Cart/Action";
-import TextField from "@mui/material/TextField";
+import { getUser, logout } from "../../../Redux/Auth/Action.js";
+import { getCart } from "../../../Redux/Customers/Cart/Action.js";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -25,7 +24,8 @@ export default function Navigation() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { auth, cart } = useSelector((store) => store);
+  const { cart } = useSelector((store: any) => store);
+  const { auth } = useSelector((store: any) => store);
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const openUserMenu = Boolean(anchorEl);

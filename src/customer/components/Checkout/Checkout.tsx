@@ -11,7 +11,6 @@ import OrderSummary from './OrderSummary';
 const steps = ['Login', 'Delivery Address', 'Order Summary', 'Payment'];
 
 export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
   const location = useLocation();
   const querySearch = new URLSearchParams(location.search);
 
@@ -32,7 +31,7 @@ export default function Checkout() {
           );
         })}
       </Stepper>
-      {activeStep === steps.length ? (
+      {0 === steps.length ? (
         <React.Fragment>
           <Typography sx={{ mt: 2, mb: 1 }}>
             All steps completed - you&apos;re finished

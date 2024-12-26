@@ -1,12 +1,11 @@
 import { Avatar, Button, Card, CardHeader, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { findProducts, deleteProductsById } from '../../State/Product/Action.js';
 
 const ProductTable = () => {
   const dispatch = useDispatch();
-  const { product } = useSelector(store => store);
-
+  const { product } = useSelector((state:any) => state);
 
   useEffect(() => {
     const data = {
@@ -25,7 +24,7 @@ const ProductTable = () => {
   }, [product.deletedProduct])
 
 
-  const handleProductDelete = (data) =>{
+  const handleProductDelete = (data:any) =>{
     dispatch(deleteProductsById(data));
   }
 
@@ -46,7 +45,7 @@ const ProductTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {product.products?.content?.map((row) => (
+              {product.products?.content?.map((row:any) => (
                 <TableRow
                   key={row?.id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

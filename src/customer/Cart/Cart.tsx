@@ -11,7 +11,7 @@ const Cart = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { cart } = useSelector(store => store);
+    const { cart } = useSelector((store: any) => store);
 
     const handleCheckout = () => {
         navigate('/checkout?step=2')
@@ -28,7 +28,7 @@ const Cart = () => {
                     <div className="lg:grid grid-cols-3 lg:px-16 relative">
                         {/* Cart Items Section */}
                         <div className="col-span-2">
-                            {cart.cart.cartItems.map((item) => (
+                            {cart.cart.cartItems.map((item:any) => (
                                 <CartItem 
                                     key={item.id} 
                                     item={item} 

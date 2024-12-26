@@ -17,8 +17,6 @@ const CartItem = ({ item, updateCart, setUpdateCart, summary = false }: any) => 
         setUpdateCart(!updateCart)
     }
 
-    console.log(item)
-
     return (
         <div className="p-5 shadow-lg border rounded-md">
             <div className="flex items-center">
@@ -50,13 +48,13 @@ const CartItem = ({ item, updateCart, setUpdateCart, summary = false }: any) => 
                 !summary &&
                 <div className="flex items-center lg:space-x-10 pt-4">
                     <div className="flex items-center space-x-2">
-                        <IconButton onClick={() => handleUpdateCartItem(-1)} disabled={item?.quantity <= 1}>
+                        <IconButton onClick={() => handleUpdateCartItem()} disabled={item?.quantity <= 1}>
                             <RemoveCircleOutlineIcon />
                         </IconButton>
                         <span className="py-1 px-7 border rounded-sm">
                             {item?.quantity}
                         </span>
-                        <IconButton sx={{ color: 'RGB(145 85 253)' }} onClick={() => handleUpdateCartItem(1)}>
+                        <IconButton sx={{ color: 'RGB(145 85 253)' }} onClick={() => handleUpdateCartItem()}>
                             <AddCircleOutlineIcon />
                         </IconButton>
 

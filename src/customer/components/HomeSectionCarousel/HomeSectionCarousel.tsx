@@ -18,7 +18,7 @@ const HomeSectionCarousel = ({ data, sectionName }: { data: any, sectionName: st
     };
 
     /* Slider Data */
-    const items = data.slice(0, 10).map((item, index) => <HomeSectionCard product={item} key={index} />);
+    const items = data.slice(0, 10).map((item:any, index:any) => <HomeSectionCard product={item} keys={index} />);
 
     /* Slider Functions */
     const syncActiveIndex = ({ item }: { item: number }) => setActiveIndex(item);

@@ -11,7 +11,7 @@ const PaymentSuccess = () => {
     const { orderId } = useParams();
 
     const dispatch = useDispatch();
-    const { order } = useSelector(store => store);
+    const { order } = useSelector((store: any) => store);
 
     useEffect(() => {
         const urlParam = new URLSearchParams(window.location.search);

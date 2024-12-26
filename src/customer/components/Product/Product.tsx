@@ -22,7 +22,7 @@ import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import { findProducts } from '../../../State/Product/Action';
+import { findProducts } from '../../../State/Product/Action.js';
 import { useDispatch, useSelector } from 'react-redux'
 import Pagination from '@mui/material/Pagination'
 
@@ -53,7 +53,7 @@ export default function Product() {
 
     const dispatch = useDispatch();
 
-    const { product } = useSelector(store => store);
+    const { product } = useSelector((state:any) => state); 
 
     useEffect(() => {
         const [minPrice, maxPrice] = priceValue == null ? [0, 10000] : priceValue.split("-").map(Number);
@@ -76,7 +76,7 @@ export default function Product() {
     const handleFilter = (value: any, sectionId: any) => {
         const searchParams = new URLSearchParams(location.search);
         let filterValue = searchParams.getAll(sectionId);
-        if (filterValue.length > 0 && filterValue[0].split(',').includes(value)) {
+        if (filterValue.length > 0 && filterValue[0]?.includes(value)) {
             filterValue = filterValue[0].split(',').filter((item) => item != value);
             if (filterValue.length === 0) {
                 searchParams.delete(sectionId)
@@ -102,6 +102,7 @@ export default function Product() {
     const handlePaginationChange = (event:any, value:any) =>{
         const searchParams = new URLSearchParams(location.search);
         searchParams.set("page", value);
+        console.log(event)
         const query = searchParams.toString();
         navigate({search:`?${query}`})
     }

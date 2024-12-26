@@ -1,5 +1,4 @@
-import { Box, Modal, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Modal } from '@mui/material'
 import RegisterForm from './RegisterForm';
 import { useLocation } from 'react-router-dom';
 import LoginForm from './LoginForm';
@@ -16,7 +15,7 @@ const style = {
     p: 4,
 };
 
-function AuthModal({ handleClose, open }) {
+function AuthModal({ handleClose, open }: { handleClose: () => void; open: boolean }) {
     const location = useLocation();
     return (
         <div>
