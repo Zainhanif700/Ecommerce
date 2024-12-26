@@ -1,7 +1,0 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import Grid from "@mui/material/Grid";
-import AdjustIcon from '@mui/icons-material/Adjust';
-function OrderCard() {
-    return (_jsx("div", { className: "p-5 shadow-sm hover:shadow-2xl border shadow-black", children: _jsxs(Grid, { container: true, spacing: 2, sx: { justifyContent: 'space-between' }, children: [_jsx(Grid, { item: true, xs: 6, children: _jsxs("div", { className: "flex cursor-pointer", children: [_jsx("img", { className: "w-[5rem] h-[5rem] object-cover object-top", src: "https://rukminim1.flixcart.com/image/612/612/xif0q/jean/h/y/g/34-jeans-bt008-laheja-original-imagqqbsfgmdhcvn.jpeg?q=70", alt: "" }), _jsxs("div", { className: "ml-5 space-y-2", children: [_jsx("p", { children: "Men Slim Mid " }), _jsx("p", { className: "opacity-50 text-xs font-semibold", children: "Size: M" }), _jsx("p", { className: "opacity-50 text-xs font-semibold", children: "Color: Black" })] })] }) }), _jsx(Grid, { item: true, xs: 2, children: _jsx("p", { children: "$1999" }) }), _jsxs(Grid, { item: true, xs: 4, children: [true && _jsxs("div", { children: [_jsxs("p", { children: [_jsx(AdjustIcon, { sx: { width: '15px', height: '15px' }, className: "text-green-600 mr-2" }), _jsx("span", { children: "Delivered On March 03" })] }), _jsx("p", { className: "text-xs", children: _jsx("span", { children: "Your Item Has Been Velivered" }) })] }), false && _jsx("p", { children: _jsx("span", { children: "Expected Delivery on Mar 03" }) })] })] }) }));
-}
-export default OrderCard;
