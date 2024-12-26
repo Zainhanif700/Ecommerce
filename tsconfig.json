@@ -1,8 +1,5 @@
 {
   "compilerOptions": {
-    "composite": true, 
-    "strict": true,
-    "esModuleInterop": true,
     "moduleResolution": "node",
     "target": "ES6",
     "module": "ES6",
