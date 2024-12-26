@@ -3,11 +3,11 @@ import { Radio, RadioGroup } from '@headlessui/react'
 import Rating from '@mui/material/Rating'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
-import ProductReviewCard from './ProductReviewCard'
+import ProductReviewCard from './ProductReviewCard.js'
 import Box from '@mui/material/Box'
 import LinearProgress from '@mui/material/LinearProgress'
-import { mens_kurta } from '../../Data/mens_kurta'
-import HomeSectionCard from '../HomeSectionCard/HomeSectionCard'
+import { mens_kurta } from '../../Data/mens_kurta.js'
+import HomeSectionCard from '../HomeSectionCard/HomeSectionCard.jsx'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItemToCart } from '../../../State/Cart/Action.js'
@@ -62,17 +62,17 @@ const products = {
     details:
         'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
 }
-function classNames(...classes: any) {
+function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 export default function ProductDetails() {
     const dispatch = useDispatch();
-    const { product } = useSelector((store: any) => store);
+    const { product } = useSelector((store) => store);
     const navigate = useNavigate();
     const params = useParams();
 
-    const [selectedSize, setSelectedSize] = useState<any>()
+    const [selectedSize, setSelectedSize] = useState();
 
     const handleAddToCart = () => {
         const data = {productId: params.productId, size: selectedSize?.name}
@@ -339,7 +339,7 @@ export default function ProductDetails() {
                 <section className='pt-10'>
                     <h1 className='py-5 text-xl font-bold'> Similar Products</h1>
                     <div className='flex flex-wrap '>
-                        {mens_kurta?.slice(0, 10)?.map((item:any, index:any) => <HomeSectionCard product={item} keys={index} />)}
+                        {mens_kurta?.slice(0, 10)?.map((item, index) => <HomeSectionCard product={item} keys={index} />)}
                     </div>
                 </section>
             </div>

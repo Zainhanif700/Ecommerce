@@ -9,7 +9,7 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 /* Component */
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
 
-const HomeSectionCarousel = ({ data, sectionName }: { data: any, sectionName: string }) => {
+const HomeSectionCarousel = ({ data, sectionName }) => {
     const [activeIndex, setActiveIndex] = useState<number>(0);
     const responsive = {
         0: { items: 2 },
@@ -18,10 +18,10 @@ const HomeSectionCarousel = ({ data, sectionName }: { data: any, sectionName: st
     };
 
     /* Slider Data */
-    const items = data.slice(0, 10).map((item:any, index:any) => <HomeSectionCard product={item} keys={index} />);
+    const items = data.slice(0, 10).map((item, index) => <HomeSectionCard product={item} keys={index} />);
 
     /* Slider Functions */
-    const syncActiveIndex = ({ item }: { item: number }) => setActiveIndex(item);
+    const syncActiveIndex = ({ item }) => setActiveIndex(item);
     const slidePrev = () => { if (activeIndex > 0) setActiveIndex(activeIndex - 1) }
     const slideNext = () => { if (activeIndex < items.length) setActiveIndex((prevIndex) => prevIndex + 1)};
 

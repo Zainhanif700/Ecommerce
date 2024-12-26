@@ -5,7 +5,7 @@ import { getOrders, shipOrder, confirmOrder, deliveredOrder, deleteOrder } from 
 
 function OrdersTable() {
   const dispatch = useDispatch();
-  const { adminOrder } = useSelector((store: any) => store);
+  const { adminOrder } = useSelector((store) => store);
 
   const [anchorEl, setAnchorEl] = useState(Array(adminOrder?.orders?.length).fill(null));
 
@@ -13,34 +13,34 @@ function OrdersTable() {
     dispatch(getOrders());
   }, [adminOrder.confirmed, adminOrder.shipped, adminOrder.delivered, adminOrder.deletedOrders])
 
-  const handleClick = (event:any, index:any) => {
-    const newAnchorElArray: any = [...anchorEl];
+  const handleClick = (event, index) => {
+    const newAnchorElArray = [...anchorEl];
     newAnchorElArray[index] = event.currentTarget
     setAnchorEl(newAnchorElArray);
   };
 
-  const handleClose = (index:any) => {
-    const newAnchorElArray: any = [...anchorEl];
+  const handleClose = (index) => {
+    const newAnchorElArray = [...anchorEl];
     newAnchorElArray[index] = null
     setAnchorEl(newAnchorElArray);
   };
 
-  const handleShippedOrder = (orderId:any, index:any) => {
+  const handleShippedOrder = (orderId, index) => {
     dispatch(shipOrder(orderId))
     handleClose(index);
   }
 
-  const handleConfimedOrder = (orderId:any, index:any) => {
+  const handleConfimedOrder = (orderId, index) => {
     dispatch(confirmOrder(orderId));
     handleClose(index);
   }
 
-  const handleDeliveredOrder = (orderId:any, index:any) => {
+  const handleDeliveredOrder = (orderId, index) => {
     dispatch(deliveredOrder(orderId))
     handleClose(index);
   }
 
-  const handleDeleteOrder = (orderId:any) => {
+  const handleDeleteOrder = (orderId) => {
     dispatch(deleteOrder(orderId));
   }
 
@@ -62,7 +62,7 @@ function OrdersTable() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {adminOrder?.orders?.length > 0 && adminOrder?.orders?.map((row:any, index:any) => (
+              {adminOrder?.orders?.length > 0 && adminOrder?.orders?.map((row, index) => (
                 <TableRow
                   key={row?.id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -70,14 +70,14 @@ function OrdersTable() {
                   <TableCell align="left">
                     <AvatarGroup max={2} sx={{ justifyContent: 'start' }}>
                       {
-                        row?.orderItem.map((item:any) =>
+                        row?.orderItem.map((item) =>
                           <Avatar src={`${item.product.imageUrl}`}></Avatar>
                         )}
                     </AvatarGroup>
                   </TableCell>
                   <TableCell align="left" scope="row">
                     {
-                      row?.orderItem.map((item:any) =>
+                      row?.orderItem.map((item) =>
                         <p>{`${item?.product?.title}`}</p>
                       )}
                   </TableCell>

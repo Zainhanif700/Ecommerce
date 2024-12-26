@@ -4,7 +4,6 @@
     "module": "ES6",
     "moduleResolution": "node",
     "target": "ES6",
-    "allowJs": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -16,5 +15,5 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.d.ts"
-  ]
+, "src/customer/Cart/Cart.jsx", "src/customer/Auth/RegisterForm.jsx", "src/customer/Auth/LoginForm.jsx", "src/customer/Auth/AuthModel.jsx", "src/Admin/view/ProductTableView.jsx", "src/Admin/view/OrdersTableView.jsx", "src/Admin/components/ProductTable.jsx", "src/Admin/components/OrdersTable.jsx", "src/Admin/components/MonthlyOverview.jsx", "src/Admin/components/CustomerTables.jsx", "src/Admin/components/CreateProductForm.jsx", "src/Admin/components/AdminDashboard.jsx", "src/Admin/components/Admin.jsx", "src/Admin/components/Achivement.jsx", "src/customer/Cart/CartItem.jsx", "src/customer/components/ProductDetails/ProductDetails.jsx", "src/customer/components/ProductDetails/ProductReviewCard.jsx", "src/customer/pages/HomePage.jsx", "src/customer/components/Product/Product.jsx", "src/customer/components/Product/FilterData.jsx", "src/customer/components/Product/ProductCard.jsx", "src/customer/components/Order/OrderTracker.jsx", "src/customer/components/Order/OrderDetails.jsx", "src/customer/components/Order/OrderCard.jsx", "src/customer/components/Order/Order.jsx", "src/customer/components/Navigation/Navigation.jsx", "src/customer/components/HomeSectionCard/HomeSectionCard.jsx", "src/customer/components/HomeSectionCarousel/HomeSectionCarousel.jsx", "src/customer/components/AddressCard/AddressCard.jsx", "src/customer/components/HomeCarousel/MainCarouselData.jsx", "src/customer/components/HomeCarousel/MainCarousel.jsx", "src/customer/components/Footer/Footer.jsx", "src/customer/components/Checkout/Checkout.jsx"  ]
 }

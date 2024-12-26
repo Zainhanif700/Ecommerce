@@ -7,7 +7,7 @@ function LoginForm() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const handleSubmit = (event:any) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         const data = new FormData(event.currentTarget);

@@ -7,4 +7,7 @@ export default defineConfig({
   optimizeDeps: {
     include: ['react-alice-carousel'], 
   },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'], // Make sure .jsx is included
+  },
 })

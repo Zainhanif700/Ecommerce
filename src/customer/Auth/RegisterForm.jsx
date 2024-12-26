@@ -9,14 +9,14 @@ function RegisterForm() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const jwt = localStorage.getItem("jwt");
-    const { auth } = useSelector((store: any) => store);
+    const { auth } = useSelector((store) => store);
 
     useEffect(() => {
         if (jwt)
             dispatch(getUser(jwt));
     }, [jwt, auth.jwt])
 
-    const handleSubmit = (event: any) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         const data = new FormData(event.currentTarget);

@@ -5,7 +5,7 @@ import { findProducts } from '../../State/Product/Action.js';
 
 const ProductTableView = () => {
   const dispatch = useDispatch();
-  const { product } = useSelector((state:any) => state);
+  const { product } = useSelector((state) => state);
 
   useEffect(() => {
     const data = {
@@ -39,7 +39,7 @@ const ProductTableView = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {product.products?.content?.slice(0,5)?.map((row:any) => (
+              {product.products?.content?.slice(0,5)?.map((row) => (
                 <TableRow
                   key={row?.id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

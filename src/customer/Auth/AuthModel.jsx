@@ -15,7 +15,7 @@ const style = {
     p: 4,
 };
 
-function AuthModal({ handleClose, open }: { handleClose: () => void; open: boolean }) {
+function AuthModal({ handleClose, open }) {
     const location = useLocation();
     return (
         <div>

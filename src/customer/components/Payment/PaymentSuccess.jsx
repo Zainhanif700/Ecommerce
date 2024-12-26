@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOrderById } from '../../../State/Order/Action.js';
 import { Alert, AlertTitle, Grid } from '@mui/material';
-import OrderTracker from '../Order/OrderTracker';
-import AddressCard from '../AddressCard/AddressCard';
+import OrderTracker from '../Order/OrderTracker.jsx';
+import AddressCard from '../AddressCard/AddressCard.jsx';
 
 const PaymentSuccess = () => {
     const [paymentId, setPaymentId] = useState<string | null>(null);
     const { orderId } = useParams();
 
     const dispatch = useDispatch();
-    const { order } = useSelector((store: any) => store);
+    const { order } = useSelector((store) => store);
 
     useEffect(() => {
         const urlParam = new URLSearchParams(window.location.search);
@@ -35,7 +35,7 @@ const PaymentSuccess = () => {
             </div>
             <OrderTracker activeStep={1} label={undefined} />
             <Grid container className='space-y-5 py-5 pt-20'>
-                {order.orders?.orderItem?.map((item:any) =>
+                {order.orders?.orderItem?.map((item) =>
                     <Grid container item className='shadow-xl rounded-md p-5'
                         sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
                         <Grid item xs={6}>

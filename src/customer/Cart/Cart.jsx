@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button"
-import CartItem from "./CartItem"
+import CartItem from "./CartItem.jsx"
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -11,7 +11,7 @@ const Cart = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { cart } = useSelector((store: any) => store);
+    const { cart } = useSelector((store) => store);
 
     const handleCheckout = () => {
         navigate('/checkout?step=2')
@@ -28,7 +28,7 @@ const Cart = () => {
                     <div className="lg:grid grid-cols-3 lg:px-16 relative">
                         {/* Cart Items Section */}
                         <div className="col-span-2">
-                            {cart.cart.cartItems.map((item:any) => (
+                            {cart.cart.cartItems.map((item) => (
                                 <CartItem 
                                     key={item.id} 
                                     item={item} 

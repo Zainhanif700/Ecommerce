@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOrderById } from '../../../State/Order/Action.js';
 import { Alert, AlertTitle, Grid } from '@mui/material';
-import OrderTracker from '../Order/OrderTracker';
-import AddressCard from '../AddressCard/AddressCard';
+import OrderTracker from '../Order/OrderTracker.jsx';
+import AddressCard from '../AddressCard/AddressCard.jsx';
 const PaymentSuccess = () => {
     var _a, _b;
     const [paymentId, setPaymentId] = useState(null);

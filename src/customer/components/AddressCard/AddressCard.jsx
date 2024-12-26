@@ -1,4 +1,4 @@
-function AddressCard({address}:any){
+function AddressCard({address}){
   return (
     <div>
       <div className="space-y-3">

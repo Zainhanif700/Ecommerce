@@ -5,7 +5,7 @@ import { findProducts, deleteProductsById } from '../../State/Product/Action.js'
 
 const ProductTable = () => {
   const dispatch = useDispatch();
-  const { product } = useSelector((state:any) => state);
+  const { product } = useSelector((state) => state);
 
   useEffect(() => {
     const data = {
@@ -24,7 +24,7 @@ const ProductTable = () => {
   }, [product.deletedProduct])
 
 
-  const handleProductDelete = (data:any) =>{
+  const handleProductDelete = (data) =>{
     dispatch(deleteProductsById(data));
   }
 
@@ -45,7 +45,7 @@ const ProductTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {product.products?.content?.map((row:any) => (
+              {product.products?.content?.map((row) => (
                 <TableRow
                   key={row?.id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

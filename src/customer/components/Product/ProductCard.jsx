@@ -2,7 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import './ProductCard.css';
 
-const ProductCard = ({ product }: { product: any }) => {
+const ProductCard = ({ product }) => {
 
     const navigate = useNavigate();
 

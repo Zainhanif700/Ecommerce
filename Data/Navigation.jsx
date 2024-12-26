@@ -24,8 +24,8 @@ export default function Navigation() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { cart } = useSelector((store: any) => store);
-  const { auth } = useSelector((store: any) => store);
+  const { cart } = useSelector((store) => store);
+  const { auth } = useSelector((store) => store);
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const openUserMenu = Boolean(anchorEl);

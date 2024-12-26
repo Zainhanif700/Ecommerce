@@ -11,7 +11,7 @@ const steps = [
     'Delivered'
 ]
 
-function OrderTracker({ activeStep, label }: { activeStep: any, label: any }) {
+function OrderTracker({ activeStep, label }) {
     
     useEffect(()=>{
         console.log(label);

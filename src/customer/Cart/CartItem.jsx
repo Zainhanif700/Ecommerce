@@ -5,7 +5,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { removeItemToCart } from '../../State/Cart/Action.js';
 
-const CartItem = ({ item, updateCart, setUpdateCart, summary = false }: any) => {
+const CartItem = ({ item, updateCart, setUpdateCart, summary = false }) => {
     const dispatch = useDispatch();
 
     const handleUpdateCartItem = () => {

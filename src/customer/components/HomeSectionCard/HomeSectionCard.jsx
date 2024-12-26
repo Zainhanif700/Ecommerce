@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 
-const HomeSectionCard = ({ product, keys }: { product: any, keys: any }) => {
+const HomeSectionCard = ({ product, keys }) => {
   const navigate = useNavigate();
   return (
     <>

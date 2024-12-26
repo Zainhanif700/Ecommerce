@@ -13,8 +13,8 @@ import {
 } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
-import ProductCard from './ProductCard'
-import { filters, singleFilter } from './FilterData'
+import ProductCard from './ProductCard.jsx'
+import { filters, singleFilter } from './FilterData.js'
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -31,7 +31,7 @@ const sortOptions = [
     { name: 'Price: High to Low', href: '#', current: false },
 ]
 
-function classNames(...classes: any) {
+function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
@@ -53,7 +53,7 @@ export default function Product() {
 
     const dispatch = useDispatch();
 
-    const { product } = useSelector((state:any) => state); 
+    const { product } = useSelector((state) => state); 
 
     useEffect(() => {
         const [minPrice, maxPrice] = priceValue == null ? [0, 10000] : priceValue.split("-").map(Number);
@@ -73,7 +73,7 @@ export default function Product() {
 
     }, [param.levelThree, colorValue, sizeValue, priceValue, discountValue, sortValue, pageNumber, stock])
 
-    const handleFilter = (value: any, sectionId: any) => {
+    const handleFilter = (value, sectionId) => {
         const searchParams = new URLSearchParams(location.search);
         let filterValue = searchParams.getAll(sectionId);
         if (filterValue.length > 0 && filterValue[0]?.includes(value)) {
@@ -92,14 +92,14 @@ export default function Product() {
         navigate({ search: `?${query}` });
     }
 
-    const handleRadioFilterChange = (e: any, sectionId: any) => {
+    const handleRadioFilterChange = (e, sectionId) => {
         const searchParams = new URLSearchParams(location.search);
         searchParams.set(sectionId, e.target.value)
         const query = searchParams.toString();
         navigate({ search: `?${query}` });
     }
 
-    const handlePaginationChange = (event:any, value:any) =>{
+    const handlePaginationChange = (event, value) =>{
         const searchParams = new URLSearchParams(location.search);
         searchParams.set("page", value);
         console.log(event)
@@ -355,7 +355,7 @@ export default function Product() {
                             {/* Product grid */}
                             <div className="w-full lg:col-span-4">
                                 <div className='flex flex-wrap bg-white py-5 justify-center'>
-                                    {product?.products?.content?.map((item:any, index:any) => <ProductCard key={index} product={item} />)}
+                                    {product?.products?.content?.map((item, index) => <ProductCard key={index} product={item} />)}
                                 </div>
                             </div>
                         </div>

@@ -5,7 +5,7 @@ import { getOrders } from '../../State/Admin/Order/Action.js';
 
 function OrdersTableView() {
   const dispatch = useDispatch();
-  const { adminOrder } = useSelector((state:any) => state);
+  const { adminOrder } = useSelector((state) => state);
 
   useEffect(() => {
     dispatch(getOrders());
@@ -27,7 +27,7 @@ function OrdersTableView() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {adminOrder?.orders?.length > 0 && adminOrder?.orders?.slice(0,5)?.map((row:any, index:any) => (
+              {adminOrder?.orders?.length > 0 && adminOrder?.orders?.slice(0,5)?.map((row, index) => (
                 <TableRow
                   key={row?.id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -35,14 +35,14 @@ function OrdersTableView() {
                   <TableCell align="left">
                     <AvatarGroup max={2} sx={{ justifyContent: 'start' }}>
                       {
-                        row?.orderItem.map((item:any) =>
+                        row?.orderItem.map((item) =>
                           <Avatar src={`${item.product.imageUrl}`}></Avatar>
                         )}
                     </AvatarGroup>
                   </TableCell>
                   <TableCell align="left" scope="row">
                     {
-                      row?.orderItem.map((item:any) =>
+                      row?.orderItem.map((item) =>
                         <p>{`${item?.product?.title}`}</p>
                       )}
                   </TableCell>

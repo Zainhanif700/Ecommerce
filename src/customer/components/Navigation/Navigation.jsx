@@ -21,7 +21,7 @@ import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { useLocation, useNavigate } from 'react-router-dom'
-import AuthModal from '../../Auth/AuthModel'
+import AuthModal from '../../Auth/AuthModel.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from "../../../State/Auth/Action.js";
 import { logout } from '../../../State/Auth/Action.js';
@@ -153,7 +153,7 @@ export default function Example() {
   /* React State */
   const [open, setOpen] = useState(false)
   const jwt = localStorage?.getItem("jwt");
-  const { auth } = useSelector((store:any) => store);
+  const { auth } = useSelector((store) => store);
   const [anchorEl, setAnchorEl] = useState(null);
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const openUserMenu = Boolean(anchorEl);
@@ -162,11 +162,11 @@ export default function Example() {
   const location = useLocation();
 
   /* React Functions */
-  function classNames(...classes: (string | undefined | false)[]) {
+  function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
 
-  const handleUserClick = (event: any) => {
+  const handleUserClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -187,7 +187,7 @@ export default function Example() {
     handleCloseUserMenu();
   };
 
-  const handleCategoryClick = (category: any, section: any, item: any) => {
+  const handleCategoryClick = (category, section, item) => {
     navigate(`/${category.id}/${section.id}/${item.name}`);
   };
 

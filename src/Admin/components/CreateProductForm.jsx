@@ -28,7 +28,7 @@ function CreateProductForm() {
   })
 
   const dispatch = useDispatch();
-  const handleChange = (e: any) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setProductData((prevState) => ({
       ...prevState,
@@ -36,10 +36,10 @@ function CreateProductForm() {
     }))
   }
 
-  const handleSizeChange = (e:any, index:any) => {
+  const handleSizeChange = (e, index) => {
     let { name, value } = e.target;
     name = name === "size_quantity" ? 'quantity' : e.target.name;
-    const sizes: any = [...productData.size];
+    const sizes = [...productData.size];
     sizes[index][name] = value;
     setProductData((prevState) => ({
       ...prevState,
@@ -47,7 +47,7 @@ function CreateProductForm() {
     }))
   }
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createProduct(productData));
   }
