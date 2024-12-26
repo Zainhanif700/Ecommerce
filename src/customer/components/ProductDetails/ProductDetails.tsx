@@ -339,7 +339,7 @@ export default function ProductDetails() {
                 <section className='pt-10'>
                     <h1 className='py-5 text-xl font-bold'> Similar Products</h1>
                     <div className='flex flex-wrap '>
-                        {mens_kurta?.slice(0, 10)?.map((item, index) => <HomeSectionCard product={item} keys={index} />)}
+                        {mens_kurta?.slice(0, 10)?.map((item:any, index:any) => <HomeSectionCard product={item} keys={index} />)}
                     </div>
                 </section>
             </div>
