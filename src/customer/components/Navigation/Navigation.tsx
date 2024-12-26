@@ -6,9 +6,7 @@ import {
   DialogBackdrop,
   DialogPanel,
   Popover,
-  PopoverButton,
   PopoverGroup,
-  PopoverPanel,
   Tab,
   TabGroup,
   TabList,
@@ -16,7 +14,7 @@ import {
   TabPanels,
 } from '@headlessui/react'
 
-import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Avatar from '@mui/material/Avatar'
 import { deepPurple } from '@mui/material/colors'
 import Button from '@mui/material/Button'
@@ -136,7 +134,7 @@ const navigation = {
           id: 'brands',
           name: 'Brands',
           items: [
-            { name: 'Re-Arranged', href: '#' },
+            { name: 'Mens_kurta', href: '#' },
             { name: 'Counterfeit', href: '#' },
             { name: 'Full Nelson', href: '#' },
             { name: 'My Way', href: '#' },

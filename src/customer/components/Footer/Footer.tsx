@@ -12,61 +12,61 @@ const Footer = () => {
                 <Grid item xs={12} sm={6} md={3}>
                     <Typography className='pb-5' variant='h6'>Company</Typography>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>About</Button>
+                        <Button className='pb-5' >About</Button>
                     </Box>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>Blog</Button>
+                        <Button className='pb-5' >Blog</Button>
                     </Box>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>Press</Button>
+                        <Button className='pb-5' >Press</Button>
                     </Box>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>Jobs</Button>
+                        <Button className='pb-5' >Jobs</Button>
                     </Box>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>Partners</Button>
+                        <Button className='pb-5' >Partners</Button>
                     </Box>
                 </Grid>
 
                 <Grid item xs={12} sm={6} md={3}>
                     <Typography className='pb-5' variant='h6'>Solutions</Typography>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>Marketing</Button>
+                        <Button className='pb-5' >Marketing</Button>
                     </Box>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>Analytics</Button>
+                        <Button className='pb-5' >Analytics</Button>
                     </Box>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>Commerce</Button>
+                        <Button className='pb-5' >Commerce</Button>
                     </Box>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>Insights</Button>
+                        <Button className='pb-5' >Insights</Button>
                     </Box>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>Support</Button>
+                        <Button className='pb-5' >Support</Button>
                     </Box>
                 </Grid>
 
                 <Grid item xs={12} sm={6} md={3}>
                     <Typography className='pb-5' variant='h6'>Documentation</Typography>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>Guides</Button>
+                        <Button className='pb-5' variant="text" >Guides</Button>
                     </Box>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>Api Status</Button>
+                        <Button className='pb-5' variant="text" >Api Status</Button>
                     </Box>
                 </Grid>
 
                 <Grid item xs={12} sm={6} md={3}>
                     <Typography className='pb-5' variant='h6'>Legal</Typography>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>Claim</Button>
+                        <Button className='pb-5' variant="text" >Claim</Button>
                     </Box>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>Privacy</Button>
+                        <Button className='pb-5' variant="text" >Privacy</Button>
                     </Box>
                     <Box>
-                        <Button className='pb-5' variant="h6" gutterBottom>Terms</Button>
+                        <Button className='pb-5' variant="text" >Terms</Button>
                     </Box>
                 </Grid>
                 <Grid className="pt-20" item xs={12}>

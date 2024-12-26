@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useLocation } from 'react-router-dom';
 import DeliveryAddressForm from './DeliveryAddressForm';
@@ -18,10 +17,6 @@ export default function Checkout() {
 
   const tempStep = querySearch.get('step');
   const step = tempStep !== null ? parseInt(tempStep, 10)-1 : undefined;
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
 
   return (
     <div className='px-10 lg:px-20'>

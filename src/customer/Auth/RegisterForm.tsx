@@ -16,7 +16,7 @@ function RegisterForm() {
             dispatch(getUser(jwt));
     }, [jwt, auth.jwt])
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: any) => {
         event.preventDefault();
 
         const data = new FormData(event.currentTarget);

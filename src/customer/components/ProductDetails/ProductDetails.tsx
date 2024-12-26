@@ -62,7 +62,6 @@ const products = {
     details:
         'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
 }
-const reviews = { href: '#', average: 4, totalCount: 117 }
 function classNames(...classes: any) {
     return classes.filter(Boolean).join(' ')
 }
@@ -73,7 +72,7 @@ export default function ProductDetails() {
     const navigate = useNavigate();
     const params = useParams();
 
-    const [selectedSize, setSelectedSize] = useState()
+    const [selectedSize, setSelectedSize] = useState<any>()
 
     const handleAddToCart = () => {
         const data = {productId: params.productId, size: selectedSize?.name}
@@ -340,7 +339,7 @@ export default function ProductDetails() {
                 <section className='pt-10'>
                     <h1 className='py-5 text-xl font-bold'> Similar Products</h1>
                     <div className='flex flex-wrap '>
-                        {mens_kurta?.slice(0, 10)?.map((item, index) => <HomeSectionCard product={item} key={index} />)}
+                        {mens_kurta?.slice(0, 10)?.map((item, index) => <HomeSectionCard product={item} keys={index} />)}
                     </div>
                 </section>
             </div>

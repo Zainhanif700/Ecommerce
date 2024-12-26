@@ -1,22 +1,23 @@
+import { useDispatch } from "react-redux";
+import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton"
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import Button from "@mui/material/Button";
-import { updateItemToCart, removeItemToCart } from '../../State/Cart/Action.js';
-import { useDispatch } from "react-redux";
+import { removeItemToCart } from '../../State/Cart/Action.js';
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, updateCart, setUpdateCart, summary = false }: any) => {
     const dispatch = useDispatch();
 
-    const handleUpdateCartItem=(num)=>{
-        const data = {quantity:item.quantity+num, cartItemId:item?.id};
-        dispatch(updateItemToCart(data))
+    const handleUpdateCartItem = () => {
+        window.alert("Currently Updating The Quantity of Cart Is Not Allowed")
     }
 
-    const handleRemoveCartItem=()=>{
+    const handleRemoveCartItem = () => {
         dispatch(removeItemToCart(item.id))
+        setUpdateCart(!updateCart)
     }
 
+    console.log(item)
 
     return (
         <div className="p-5 shadow-lg border rounded-md">
@@ -26,8 +27,8 @@ const CartItem = ({ item }) => {
                 </div>
                 <div className="ml-5 space-y-1">
                     <p className="font-semibold">{item?.product?.title}</p>
-                    <p className="opacity-70">Size: {item?.size? item?.size : 'M'}, {item?.product?.color}</p>
-                    <p className="opacity-70 mt-2">Seller: {item?.product?.brand?? '---'}</p>
+                    <p className="opacity-70">Size: {item?.size ? item?.size : 'M'}, {item?.product?.color}</p>
+                    <p className="opacity-70 mt-2">Seller: {item?.product?.brand ?? '---'}</p>
 
                     <div className="mt-4 lg:row-span-3 lg:mt-0">
                         <h2 className="sr-only">Product information</h2>
@@ -36,32 +37,35 @@ const CartItem = ({ item }) => {
                                 ${item?.price}
                             </p>
                             <p className='opacity-50 line-through'>
-                                ${item?.discountedPrice}
+                            {item?.discountedPrice}
                             </p>
                             <p className='text-green-600 font-semibold'>
-                                {item?.discountPersent}% Off
+                                {item?.product?.discountedPersent}% Off
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="flex items-center lg:space-x-10 pt-4">
-                <div className="flex items-center space-x-2">
-                    <IconButton onClick={()=>handleUpdateCartItem(-1)} disabled={item?.quantity<=1}>
-                        <RemoveCircleOutlineIcon />
-                    </IconButton>
-                    <span className="py-1 px-7 border rounded-sm">
-                        {item?.quantity}
-                    </span>
-                    <IconButton sx={{ color: 'RGB(145 85 253)' }} onClick={()=>handleUpdateCartItem(1)}>
-                        <AddCircleOutlineIcon />
-                    </IconButton>
+            {
+                !summary &&
+                <div className="flex items-center lg:space-x-10 pt-4">
+                    <div className="flex items-center space-x-2">
+                        <IconButton onClick={() => handleUpdateCartItem(-1)} disabled={item?.quantity <= 1}>
+                            <RemoveCircleOutlineIcon />
+                        </IconButton>
+                        <span className="py-1 px-7 border rounded-sm">
+                            {item?.quantity}
+                        </span>
+                        <IconButton sx={{ color: 'RGB(145 85 253)' }} onClick={() => handleUpdateCartItem(1)}>
+                            <AddCircleOutlineIcon />
+                        </IconButton>
 
+                    </div>
+                    <div>
+                        <Button sx={{ color: 'RGB(145 85 253)' }} onClick={handleRemoveCartItem}>remove</Button>
+                    </div>
                 </div>
-                <div>
-                    <Button sx={{ color: 'RGB(145 85 253)' }} onClick={handleRemoveCartItem}>remove</Button>
-                </div>
-            </div>
+            }
         </div>
     )
 }

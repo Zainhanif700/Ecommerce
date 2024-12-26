@@ -1,7 +1,19 @@
 {
   "files": [],
   "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true, 
+    "emitDeclarationOnly": true, 
+    "outDir": "./types",  
+    "skipLibCheck": true, 
+    "moduleResolution": "node"
+  },
 }

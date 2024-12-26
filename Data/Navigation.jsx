@@ -37,7 +37,7 @@ export default function Navigation() {
       dispatch(getUser(jwt));
       dispatch(getCart(jwt));
     }
-  }, [jwt]);
+  }, []);
 
   const handleUserClick = (event) => {
     setAnchorEl(event.currentTarget);

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getOrderById } from '../../../State/Order/Action.js';
+import { createPayment } from '../../../State/Payment/Action.js';
 
 function OrderSummary() {
 
@@ -18,15 +19,25 @@ function OrderSummary() {
     dispatch(getOrderById(orderId));
   }, [])
 
+  const handleCheckout = () => {
+    const data = {
+      "quantity": 1,
+      "amount": order?.orders?.totalDiscountedPrice * 100,
+      "currency": "USD",
+      "name": "books"
+    }
+    dispatch(createPayment(orderId, data));
+  }
+
   return (
     <div>
       <div className="p-5 rounded-s-md border">
-        <AddressCard address={order?.orders?.shippingAddress}/>
+        <AddressCard address={order?.orders?.shippingAddress} />
       </div>
       <div>
         <div className="lg:grid py-2 grid-cols-3 relative">
           <div className="col-span-2">
-            {order?.orders?.orderItem?.map((item) => <CartItem item={item}/>)}
+            {order?.orders?.orderItem?.map((item) => <CartItem item={item} summary={true}/>)}
           </div>
           <div className="px-5 sticky top-0 h-[100vh] mt-5 lg:mt-0">
             <div className="border mb-4">
@@ -52,7 +63,7 @@ function OrderSummary() {
                 </div>
               </div>
             </div>
-            <Button variant='contained' className="w-full" sx={{ px: '2.5rem', py: '.7rem', bgcolor: '#9155fd' }}>
+            <Button variant='contained' onClick={handleCheckout} className="w-full" sx={{ px: '2.5rem', py: '.7rem', bgcolor: '#9155fd' }}>
               Checkout
             </Button>
           </div>

@@ -1,4 +1,3 @@
-import React from "react"
 import { Route, Routes } from "react-router-dom";
 import HomePage from "../customer/pages/HomePage";
 import Cart from "../customer/Cart/Cart";
@@ -9,6 +8,7 @@ import Product from "../customer/components/Product/Product";
 import ProductDetails from "../customer/components/ProductDetails/ProductDetails";
 import Checkout from "../customer/components/Checkout/Checkout";
 import Order from "../customer/components/Order/Order";
+import PaymentSuccess from "../customer/components/Payment/PaymentSuccess";
 
 function CustomerRouters() {
     return (
@@ -26,10 +26,7 @@ function CustomerRouters() {
                 <Route path='/checkout' element={<Checkout />}></Route>
                 <Route path='/account/order' element={<Order />}></Route>
                 <Route path='/account/order/:orderID' element={<OrderDetails />}></Route>
-
-                {/* <Checkout /> */}
-                {/* <Order/> */}
-                {/* <OrderDetails /> */}
+                <Route path='/payment/:orderId' element={<PaymentSuccess />}></Route>
             </Routes>
             <div className="pt-10">
                 <Footer />

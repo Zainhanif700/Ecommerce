@@ -56,7 +56,6 @@ export default function Product() {
     const { product } = useSelector(store => store);
 
     useEffect(() => {
-        console.log(typeof pageNumber)
         const [minPrice, maxPrice] = priceValue == null ? [0, 10000] : priceValue.split("-").map(Number);
         const data = {
             category: param.levelThree,
@@ -100,7 +99,7 @@ export default function Product() {
         navigate({ search: `?${query}` });
     }
 
-    const handlePaginationChange = (event, value) =>{
+    const handlePaginationChange = (event:any, value:any) =>{
         const searchParams = new URLSearchParams(location.search);
         searchParams.set("page", value);
         const query = searchParams.toString();
@@ -355,7 +354,7 @@ export default function Product() {
                             {/* Product grid */}
                             <div className="w-full lg:col-span-4">
                                 <div className='flex flex-wrap bg-white py-5 justify-center'>
-                                    {product?.products?.content?.map((item, index) => <ProductCard key={index} product={item} />)}
+                                    {product?.products?.content?.map((item:any, index:any) => <ProductCard key={index} product={item} />)}
                                 </div>
                             </div>
                         </div>
