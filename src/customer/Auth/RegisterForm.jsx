@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Grid, TextField } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -26,8 +26,11 @@ function RegisterForm() {
             lastName: data.get("lastName"),
             email: data.get("email"),
             password: data.get("password"),
+            mobile: data.get("mobile"),
+            username: data.get("Username"),
         }
-        dispatch(register(userData));
+        localStorage.setItem('cloud-email',userData?.email)
+        dispatch(register(userData, navigate));
     }
 
     return (
@@ -41,7 +44,7 @@ function RegisterForm() {
                             name='firstName'
                             label='First Name'
                             fullWidth
-                            autoComplete='given-name'
+                            autoComplete='firstName'
                         />
 
                     </Grid>
@@ -52,16 +55,40 @@ function RegisterForm() {
                             name='lastName'
                             label='Last Name'
                             fullWidth
-                            autoComplete='given-name'
+                            autoComplete='lastName'
                         />
 
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
                             required
+                            id='username'
+                            name='Username'
+                            label='Username'
+                            fullWidth
+                        />
+
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            required
+                            id='mobile'
+                            name='mobile'
+                            label='Phone Number'
+                            type='tel'
+                            fullWidth
+                            autoComplete='tel'
+                        />
+
+                    </Grid>
+                    
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            required
                             id='email'
                             name='email'
                             label='Email'
+                            type='email'
                             fullWidth
                             autoComplete='email'
                         />
@@ -73,7 +100,8 @@ function RegisterForm() {
                             name='password'
                             label='Password'
                             fullWidth
-                            autoComplete='password'
+                            hidden
+                            type='password'
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>

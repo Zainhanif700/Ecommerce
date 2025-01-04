@@ -2,6 +2,7 @@ import { Box, Modal } from '@mui/material'
 import RegisterForm from './RegisterForm';
 import { useLocation } from 'react-router-dom';
 import LoginForm from './LoginForm';
+import VerifyForm from './VerifyForm';
 
 const style = {
     position: 'absolute',
@@ -27,7 +28,7 @@ function AuthModal({ handleClose, open }) {
             >
                 <Box sx={style}>
                     {
-                        location.pathname ==="/register"? <LoginForm/>: <RegisterForm/>
+                        location.pathname ==="/login" || location.pathname ==="/"? <LoginForm/>: location.pathname ==="/verify"? <VerifyForm/> : <RegisterForm/>
                     }
                 </Box>
             </Modal>

@@ -25,6 +25,7 @@ import AuthModal from '../../Auth/AuthModel.jsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from "../../../State/Auth/Action.js";
 import { logout } from '../../../State/Auth/Action.js';
+import { toast } from 'react-toastify'
 
 const navigation = {
   categories: [
@@ -505,7 +506,7 @@ export default function Example() {
                     </div>
                   ) : (
                     <Button onClick={handleOpen} className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                      Sign in 
+                     {location.pathname ==="/login" || location.pathname ==="/"? 'Sign in' : location.pathname ==="/verify"? 'Verify Email': 'Sign Up'} 
                     </Button>
                   )
                   }

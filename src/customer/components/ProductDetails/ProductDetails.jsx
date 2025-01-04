@@ -85,6 +85,11 @@ export default function ProductDetails() {
         dispatch(findProductsById(data))
     }, [params.productId])
 
+
+    useEffect(()=>{
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    },[])
+
     return (
         <div className="bg-white lg:px-20">
             <div className="pt-6">
