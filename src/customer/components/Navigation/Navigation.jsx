@@ -21,7 +21,7 @@ import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { useLocation, useNavigate } from 'react-router-dom'
-import AuthModal from '../../Auth/AuthModel.js'
+import AuthModal from '../../Auth/AuthModel.jsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from "../../../State/Auth/Action.js";
 import { logout } from '../../../State/Auth/Action.js';
@@ -202,8 +202,6 @@ export default function Example() {
     if (auth?.user != null)
       handleClose();
 
-    if (location.pathname === "/login" || location.pathname === "/register")
-      navigate(-1);
 
   }, [auth?.user])
 
@@ -507,7 +505,7 @@ export default function Example() {
                     </div>
                   ) : (
                     <Button onClick={handleOpen} className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                      Sign in
+                      Sign in 
                     </Button>
                   )
                   }

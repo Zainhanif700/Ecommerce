@@ -12,7 +12,7 @@ function DeliveryAddressForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) =>{
+  const handleSubmit = (e) =>{
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const address = {

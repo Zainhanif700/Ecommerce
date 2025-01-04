@@ -27,7 +27,7 @@ function AuthModal({ handleClose, open }) {
             >
                 <Box sx={style}>
                     {
-                        location.pathname ==="/login"? <LoginForm/>: <RegisterForm/>
+                        location.pathname ==="/register"? <LoginForm/>: <RegisterForm/>
                     }
                 </Box>
             </Modal>

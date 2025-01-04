@@ -10,7 +10,7 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
 
 const HomeSectionCarousel = ({ data, sectionName }) => {
-    const [activeIndex, setActiveIndex] = useState<number>(0);
+    const [activeIndex, setActiveIndex] = useState(0);
     const responsive = {
         0: { items: 2 },
         720: { items: 3 },
