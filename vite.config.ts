@@ -5,9 +5,16 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    include: ['react-alice-carousel'], 
+    include: ['react-alice-carousel'],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'], // Make sure .jsx is included
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
+  server: {
+    host: true,
+    port: 5173,
+    watch: {
+      usePolling: true
+    }
   },
 })
