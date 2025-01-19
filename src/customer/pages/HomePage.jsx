@@ -12,8 +12,7 @@ function HomePage() {
           <HomeSectionCarousel data={mens_kurta} sectionName={"Ment's Kurta"}/>
           <HomeSectionCarousel data={mens_kurta} sectionName={"Ment's Shoes"}/>
           <HomeSectionCarousel data={mens_kurta} sectionName={"Men's Shirt"}/>
-          <HomeSectionCarousel data={mens_kurta} sectionName={"Women's Saree"}/>
-          <HomeSectionCarousel data={mens_kurta} sectionName={"Women's Dress"}/>
+     
         </div>
         
       </div>
