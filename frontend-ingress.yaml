@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-service
+spec:
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80  
+      targetPort: 5173 
+  type: ClusterIP  
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"  
+spec:
+  rules:
+  - host: www.lowtechgmbh.com 
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: my-app-service  
+            port:
+              number: 80  
+  tls:
+  - hosts:
+    - www.lowtechgmbh.com 
+    secretName: my-app-tls-secret  # TLS secret for SSL (you will create this secret for HTTPS)
