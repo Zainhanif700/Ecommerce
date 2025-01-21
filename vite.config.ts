@@ -11,7 +11,7 @@ export default defineConfig({
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   server: {
-    host: "lowtechgmbh-d4hbh6dqcza7b0bf.canadacentral-01.azurewebsites.net",
+    host: true,
     port: 5173,
     watch: {
       usePolling: true,
