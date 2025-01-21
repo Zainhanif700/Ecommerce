@@ -28,6 +28,24 @@ function CreateProductForm() {
   })
 
   const dispatch = useDispatch();
+
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+      setSelectedImage(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result); 
+      };
+      reader.readAsDataURL(file); 
+    } else {
+      alert('Please select a valid image file');
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProductData((prevState) => ({
@@ -49,7 +67,22 @@ function CreateProductForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createProduct(productData));
+
+    const formData = new FormData();
+
+    if (selectedImage) {
+      formData.append('image', selectedImage);
+    }
+
+    Object.keys(productData).forEach((key) => {
+      if (key === 'size') {
+        formData.append(key, JSON.stringify(productData[key]));
+      } else {
+        formData.append(key, productData[key]);
+      }
+    });
+
+    dispatch(createProduct(formData));
   }
 
   return (
@@ -65,13 +98,19 @@ function CreateProductForm() {
       <form onSubmit={handleSubmit} >
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <TextField
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
               fullWidth
-              label='Image URL'
-              name='imageUrl'
-              value={productData.imageUrl}
-              onChange={handleChange}
             />
+            {imagePreview && (
+              <img
+                src={imagePreview}
+                alt="Preview"
+                style={{ width: "100%", maxWidth: "400px", marginTop: "10px" }}
+              />
+            )}
           </Grid>
 
           <Grid item xs={12} sm={6}>

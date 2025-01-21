@@ -1,5 +1,6 @@
 import axios from "axios"
 import { api } from "../../config/apiConfig"
+import { apiForm } from "../../config/apiConfig"
 import { CREATE_PRODUCT_FAILURE, CREATE_PRODUCT_REQUEST, CREATE_PRODUCT_SUCCESS, DELETE_PRODUCT_FAILURE, DELETE_PRODUCT_REQUEST, DELETE_PRODUCT_SUCCESS, FIND_PRODUCT_BY_ID_FAILURE, FIND_PRODUCT_BY_ID_REQUEST, FIND_PRODUCT_BY_ID_SUCCESS, FIND_PRODUCTS_FAILURE, FIND_PRODUCTS_REQUEST, FIND_PRODUCTS_SUCCESS } from "./ActionType"
 
 export const findProducts = (reqData) => async (dispatch) => {
@@ -44,7 +45,7 @@ export const deleteProductsById = (productId) => async (dispatch) => {
 export const createProduct = (product) => async (dispatch) => {
     dispatch({ type: CREATE_PRODUCT_REQUEST });
     try {
-        const { data } = await api.post(`/api/admin/products/`, product)
+        const { data } = await apiForm.post(`/api/admin/products/`, product)
         dispatch({ type: CREATE_PRODUCT_SUCCESS, payload: data })
     }
     catch (error) {
