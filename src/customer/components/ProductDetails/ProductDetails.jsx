@@ -6,12 +6,11 @@ import Grid from '@mui/material/Grid'
 import ProductReviewCard from './ProductReviewCard.jsx'
 import Box from '@mui/material/Box'
 import LinearProgress from '@mui/material/LinearProgress'
-import { mens_kurta } from '../../Data/mens_kurta.js'
-import HomeSectionCard from '../HomeSectionCard/HomeSectionCard.jsx'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItemToCart } from '../../../State/Cart/Action.js'
 import { findProductsById } from '../../../State/Product/Action.js';
+import { toast } from 'react-toastify'
 
 const products = {
     name: 'Basic Tee 6-Pack',
@@ -69,13 +68,18 @@ export default function ProductDetails() {
     const { product } = useSelector((store) => store);
     const navigate = useNavigate();
     const params = useParams();
-
+    const jwt = localStorage?.getItem("jwt");
     const [selectedSize, setSelectedSize] = useState();
 
     const handleAddToCart = () => {
         const data = {productId: params.productId, size: selectedSize?.name}
         dispatch(addItemToCart(data))
-        navigate('/cart')
+        if (jwt){
+            navigate('/cart')
+        }
+        else{
+            toast.error("Please Login First");
+        }
     }
 
     useEffect(() => {

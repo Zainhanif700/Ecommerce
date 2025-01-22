@@ -7,7 +7,7 @@ import OrderTracker from '../Order/OrderTracker.jsx';
 import AddressCard from '../AddressCard/AddressCard.jsx';
 
 const PaymentSuccess = () => {
-    const [paymentId, setPaymentId] = useState<string | null>(null);
+    const [paymentId, setPaymentId] = useState(null);
     const { orderId } = useParams();
 
     const dispatch = useDispatch();

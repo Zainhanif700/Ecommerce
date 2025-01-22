@@ -84,7 +84,7 @@ const navigation = {
           ],
         },
       ],
-      
+
     },
   ],
   pages: [
@@ -240,7 +240,7 @@ export default function Example() {
                 </div>
               ))}
             </div>
-            
+
           </DialogPanel>
         </div>
       </Dialog>
@@ -402,7 +402,7 @@ export default function Example() {
                           color: "white",
                           cursor: "pointer"
                         }}>
-                        {auth?.user?.firstName[0].toUpperCase()}
+                        { }
                       </Avatar>
 
                       <Menu
@@ -421,7 +421,7 @@ export default function Example() {
                     </div>
                   ) : (
                     <Button onClick={handleOpen} className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                     {location.pathname ==="/login" || location.pathname ==="/"? 'Sign in' : location.pathname ==="/verify"? 'Verify Email': 'Sign Up'} 
+                      {location.pathname === "/login" || location.pathname === "/" ? 'Sign in' : location.pathname === "/verify" ? 'Verify Email' : 'Sign Up'}
                     </Button>
                   )
                   }
@@ -429,13 +429,16 @@ export default function Example() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <a href="/cart" className="group -m-2 flex items-center p-2">
-                    <ShoppingBagIcon
-                      aria-hidden="true"
-                      className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
-                    />
-                    <span className="sr-only">items in cart, view bag</span>
-                  </a>
+                  {
+                    jwt && auth?.user?.firstName[0]?.toUpperCase() &&
+                    <a href="/cart" className="group -m-2 flex items-center p-2">
+                      <ShoppingBagIcon
+                        aria-hidden="true"
+                        className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
+                      />
+                      <span className="sr-only">items in cart, view bag</span>
+                    </a>
+                  }
                 </div>
               </div>
             </div>
