@@ -18,8 +18,6 @@ const products = {
     price: '$192',
     href: '#',
     breadcrumbs: [
-        { id: 1, name: 'Men', href: '#' },
-        { id: 2, name: 'Clothing', href: '#' },
     ],
     images: [
         {
@@ -132,18 +130,6 @@ export default function ProductDetails() {
                                 className="h-full w-full object-cover object-center"
                             />
                         </div>
-                        <div className="flex flex-wrap space-x-5 justify-center">
-                            {products.images.map((image) =>
-                                <div className='aspect-h-2 aspect-w-3 overflow-hidden rounded-lg max-w-[5rem] max-h-[5rem] mt-4'>
-                                    <img
-                                        alt={image.alt}
-                                        src={image.src}
-                                        className="aspect-[3/2] size-full rounded-lg object-cover"
-                                    />
-                                </div>
-                            )}
-
-                        </div>
                     </div>
 
                     {/* Product info */}
@@ -243,7 +229,7 @@ export default function ProductDetails() {
                                 <h3 className="sr-only">Description</h3>
 
                                 <div className="space-y-6">
-                                    <p className="text-base text-gray-900">{product.description}</p>
+                                    <p className="text-base text-gray-900">{product.product?.description}</p>
                                 </div>
                             </div>
 
@@ -261,13 +247,6 @@ export default function ProductDetails() {
                                 </div>
                             </div>
 
-                            <div className="mt-10">
-                                <h2 className="text-sm font-medium text-gray-900">Details</h2>
-
-                                <div className="mt-4 space-y-6">
-                                    <p className="text-sm text-gray-600">{product.details}</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -279,7 +258,7 @@ export default function ProductDetails() {
                         <Grid container spacing={7}>
                             <Grid item xs={7}>
                                 <div className='space-y-5'>
-                                    {[1, 1, 1].map(() => <ProductReviewCard />)}
+                                    {[1].map(() => <ProductReviewCard />)}
                                 </div>
                             </Grid>
                             <Grid item xs={5}>
@@ -341,12 +320,6 @@ export default function ProductDetails() {
 
                 </section>
 
-                <section className='pt-10'>
-                    <h1 className='py-5 text-xl font-bold'> Similar Products</h1>
-                    <div className='flex flex-wrap '>
-                        {mens_kurta?.slice(0, 10)?.map((item, index) => <HomeSectionCard product={item} keys={index} />)}
-                    </div>
-                </section>
             </div>
         </div>
     )
