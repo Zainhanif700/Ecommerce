@@ -16,9 +16,6 @@ export default defineConfig({
     watch: {
       usePolling: true,
     },
-    allowedHosts: ['*'],
-    proxy: {
-      '/api': 'https://lowtechgmbh-d4hbh6dqcza7b0bf.canadacentral-01.azurewebsites.net', 
-    },
+    allowedHosts: ['lowtechgmbh-d4hbh6dqcza7b0bf.canadacentral-01.azurewebsites.net', '*'],
   },
 })
