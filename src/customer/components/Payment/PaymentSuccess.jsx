@@ -22,6 +22,8 @@ const PaymentSuccess = () => {
         dispatch(getOrderById(orderId))
     }, [orderId, paymentId])
 
+    console.log(order?.orders?.user?.email)
+
     return (
         <div className='px-2 lg:px-36'>
             <div className='flex flex-col justify-center items-center'>

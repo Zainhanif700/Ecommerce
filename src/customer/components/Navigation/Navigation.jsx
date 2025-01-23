@@ -430,7 +430,7 @@ export default function Example() {
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
                   {
-                    jwt && auth?.user?.firstName[0]?.toUpperCase() &&
+                    jwt && auth?.user?.firstName?.[0]?.toUpperCase() &&
                     <a href="/cart" className="group -m-2 flex items-center p-2">
                       <ShoppingBagIcon
                         aria-hidden="true"
