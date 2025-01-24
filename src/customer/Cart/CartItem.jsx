@@ -32,10 +32,10 @@ const CartItem = ({ item, updateCart, setUpdateCart, summary = false }) => {
                         <h2 className="sr-only">Product information</h2>
                         <div className='flex space-x-5 items-center text-lg text-gray-900 pt-6'>
                             <p className='font-semibold'>
-                                ${item?.price}
+                                ${item?.price-item?.discountedPrice}
                             </p>
                             <p className='opacity-50 line-through'>
-                            {item?.discountedPrice}
+                            {item?.price}
                             </p>
                             <p className='text-green-600 font-semibold'>
                                 {item?.product?.discountedPersent}% Off

@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import { useLocation } from 'react-router-dom';
 import DeliveryAddressForm from './DeliveryAddressForm';
 import OrderSummary from './OrderSummary';
+import { useSelector } from 'react-redux';
 
 const steps = ['Login', 'Delivery Address', 'Order Summary', 'Payment'];
 

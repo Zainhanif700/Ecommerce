@@ -72,6 +72,7 @@ export const login = (userData) => async (dispatch) => {
         }
         dispatch(loginSuccess(user.token));
         dispatch(getUserSuccess(user));
+        toast.success("You are logged in successfully")
     }
     catch (error) {
         toast.error(error.message)

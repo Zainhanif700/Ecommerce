@@ -12,7 +12,10 @@ const PaymentSuccess = () => {
 
     const dispatch = useDispatch();
     const { order } = useSelector((store) => store);
+    const { cart } = useSelector((store) => store);
 
+    console.log(cart);
+    
     useEffect(() => {
         const urlParam = new URLSearchParams(window.location.search);
         setPaymentId(urlParam.get('paymentId'));

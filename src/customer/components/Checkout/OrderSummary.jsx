@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getOrderById } from '../../../State/Order/Action.js';
 import { createPayment } from '../../../State/Payment/Action.js';
+import { removeItemToCart } from "../../../State/Cart/Action.js";
 
 function OrderSummary() {
 
@@ -14,6 +15,7 @@ function OrderSummary() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const orderId = searchParams.get("order_id");
+  const { cart } = useSelector((store) => store);
 
   useEffect(() => {
     dispatch(getOrderById(orderId));
@@ -25,6 +27,10 @@ function OrderSummary() {
       "amount": order?.orders?.totalDiscountedPrice * 100,
       "currency": "USD",
       "name": "books"
+    }
+    console.log(cart)
+    for (var i=0; i<cart?.cartItems?.length; i++){
+      dispatch(removeItemToCart(cart?.cartItems?.[i].id))
     }
     dispatch(createPayment(orderId, data));
   }

@@ -47,7 +47,7 @@ function OrdersTable() {
   return (
     <div className='p-10'>
       <Card className='mt-2 w-[100%]'>
-        <CardHeader title='All Products' />
+        <CardHeader title='All Orders' />
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
             <TableHead>
