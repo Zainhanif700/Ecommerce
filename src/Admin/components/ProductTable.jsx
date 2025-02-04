@@ -9,7 +9,7 @@ const ProductTable = () => {
 
   useEffect(() => {
     const data = {
-      category: "mens_kurta",
+      category: "t-shirts",
       colors: [],
       sizes: [],
       minPrice: 0,
