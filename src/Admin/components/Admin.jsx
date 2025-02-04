@@ -11,7 +11,6 @@ import AdminDashboard from "./AdminDashboard";
 const menu = [
     { name: 'Dashboard', path: '/admin', icon: <DashboardIcon /> },
     { name: 'Products', path: '/admin/products', icon: <DashboardIcon /> },
-    { name: 'Customers', path: '/admin/customers', icon: <DashboardIcon /> },
     { name: 'Orders', path: '/admin/orders', icon: <DashboardIcon /> },
     { name: 'AddProduct', path: '/admin/product/create', icon: <DashboardIcon /> },
 ]
