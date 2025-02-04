@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_b65c213af44a4202a38c558b55d0fa0e }}/zainhanif73/lowtechgmbh:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_b65c213af44a4202a38c558b55d0fa0e }}/lowtechgmbh:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'lowtechgmbh-frontend'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_41f1015922b3454d976f6c244f4c15fb }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_b65c213af44a4202a38c558b55d0fa0e }}/zainhanif73/lowtechgmbh:${{ github.sha }}'
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_b65c213af44a4202a38c558b55d0fa0e }}/lowtechgmbh:${{ github.sha }}'
