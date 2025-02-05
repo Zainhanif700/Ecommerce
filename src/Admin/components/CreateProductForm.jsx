@@ -228,12 +228,20 @@ function CreateProductForm() {
                 onChange={handleChange}
                 label='Third Level Category'
               >
-                <MenuItem value="top">Tops</MenuItem>
-                <MenuItem value="women_dress">Dresses</MenuItem>
-                <MenuItem value="t-shirts">T-Shirts</MenuItem>
-                <MenuItem value="saree">Saree</MenuItem>
-                <MenuItem value="lengha_choli">Lengha Choli</MenuItem>
-                <MenuItem value="mens_kurta">Mens Kurta</MenuItem>
+                <MenuItem value="Modern Home">Modern Home</MenuItem>
+                <MenuItem value="Rustic Charm">Rustic Charm</MenuItem>
+                <MenuItem value="Urban Living">Urban Living</MenuItem>
+                <MenuItem value="EcoStyle">EcoStyle</MenuItem>
+                <MenuItem value="Rugs">Rugs</MenuItem>
+                <MenuItem value="Lamps">Lamps</MenuItem>
+                <MenuItem value="Wall Art">Wall Art</MenuItem>
+                <MenuItem value="Mirrors">Mirrors</MenuItem>
+                <MenuItem value="Cushions">Cushions</MenuItem>
+                <MenuItem value="Sofas">Sofas</MenuItem>
+                <MenuItem value="Chairs">Chairs</MenuItem>
+                <MenuItem value="Beds">Beds</MenuItem>
+                <MenuItem value="Cabinets">Cabinets</MenuItem>
+                <MenuItem value="Outdoor Furniture">Outdoor Furniture</MenuItem>
               </Select>
             </FormControl>
           </Grid>
