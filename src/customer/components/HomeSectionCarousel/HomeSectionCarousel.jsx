@@ -18,7 +18,7 @@ const HomeSectionCarousel = ({ data, sectionName }) => {
     };
 
     /* Slider Data */
-    const items = data.slice(0, 10).map((item, index) => <HomeSectionCard product={item} keys={index} />);
+    const items = data?.slice(0, 10).map((item, index) => <HomeSectionCard product={item} keys={item?.id} />);
 
     /* Slider Functions */
     const syncActiveIndex = ({ item }) => setActiveIndex(item);
@@ -59,7 +59,7 @@ const HomeSectionCarousel = ({ data, sectionName }) => {
                         onInitialized={() => setActiveIndex(0)}
                     />
 
-                    {activeIndex !== items.length - 5 &&
+                    {activeIndex !== items?.length - 5 &&
                         <Button
                             variant="contained"
                             sx={{

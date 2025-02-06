@@ -24,7 +24,7 @@ function OrderSummary() {
   const handleCheckout = () => {
     const data = {
       "quantity": 1,
-      "amount": order?.orders?.totalDiscountedPrice * 100,
+      "amount": order?.orders?.totalPrice-order?.orders?.totalDiscountedPrice * 100,
       "currency": "USD",
       "name": "books"
     }
@@ -65,7 +65,7 @@ function OrderSummary() {
                 <hr />
                 <div className="flex justify-between pt-2 px-2 text-black ">
                   <span>Total Amount</span>
-                  <span className=" text-green-600">${order?.orders?.totalDiscountedPrice}</span>
+                  <span className=" text-green-600">${order?.orders?.totalPrice-order?.orders?.totalDiscountedPrice}</span>
                 </div>
               </div>
             </div>
