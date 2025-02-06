@@ -24,7 +24,7 @@ function OrderSummary() {
   const handleCheckout = () => {
     const data = {
       "quantity": 1,
-      "amount": order?.orders?.totalPrice-order?.orders?.totalDiscountedPrice * 100,
+      "amount": (order?.orders?.totalPrice-order?.orders?.totalDiscountedPrice) * 100,
       "currency": "USD",
       "name": "books"
     }

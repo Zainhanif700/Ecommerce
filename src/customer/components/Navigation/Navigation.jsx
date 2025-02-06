@@ -58,12 +58,11 @@ const navigation = {
             { name: 'Beds', href: '#' },
             { name: 'Cabinets', href: '#' },
             { name: 'Outdoor Furniture', href: '#' },
-            { name: 'Browse All', href: '#' },
           ],
         },
         {
           id: 'decor',
-          name: 'Decor',
+          name: 'Decoration',
           items: [
             { name: 'Rugs', href: '#' },
             { name: 'Lamps', href: '#' },
@@ -218,9 +217,15 @@ export default function Example() {
                         >
                           {section.items.map((item) => (
                             <li key={item.name} className="flow-root">
-                              <a href={item.href} className="-m-2 block p-2 text-gray-500">
+                              <p
+                                onClick={() => {
+                                  handleCategoryClick(category, section, item);
+                                  close(); 
+                                }}
+                                className="cursor-pointer hover:text-gray-800"
+                              >
                                 {item.name}
-                              </a>
+                              </p>
                             </li>
                           ))}
                         </ul>
@@ -268,7 +273,7 @@ export default function Example() {
                   <span className="sr-only">Company</span>
                   <img
                     alt=""
-                    src="https://res.cloudinary.com/ddkso1wxi/image/upload/v1675919455/Logo/Copy_of_Zosh_Academy_nblljp.png"
+                    src="https://lowtechgmbhstorage.blob.core.windows.net/lowtechgmbh-blob/Screenshot 2025-02-06 193950.png"
                     className="h-8 w-auto"
                   />
                 </a>

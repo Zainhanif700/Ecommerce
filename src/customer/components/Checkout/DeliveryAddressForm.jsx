@@ -44,19 +44,19 @@ function DeliveryAddressForm() {
           <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
-                <TextField required id="firstName" name="firstName" label='First Name' fullWidth autoComplete="given-name" />
+                <TextField required id="firstName" name="firstName" label='First Name' fullWidth autoComplete="given-firstname" />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField required id="lastName" name="lastName" label='Last Name' fullWidth autoComplete="given-name" />
+                <TextField required id="lastName" name="lastName" label='Last Name' fullWidth autoComplete="given-lastname" />
               </Grid>
               <Grid item xs={12}>
-                <TextField required id="address" name="address" label='Address' multiline rows={4} fullWidth autoComplete="given-name" />
+                <TextField required id="address" name="address" label='Address' multiline rows={4} fullWidth autoComplete="given-address" />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField required id="city" name="city" label='City' fullWidth autoComplete="given-name" />
+                <TextField required id="city" name="city" label='City' fullWidth autoComplete="given-city" />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField required id="state" name="state" label='State/Province/Region' fullWidth autoComplete="given-name" />
+                <TextField required id="state" name="state" label='State/Province/Region' fullWidth autoComplete="given-state" />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField required id="zipCode" name="zipCode" label='Zip / Postal code' fullWidth autoComplete="shipping postal-code" />

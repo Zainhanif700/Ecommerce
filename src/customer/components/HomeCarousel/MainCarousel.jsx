@@ -5,7 +5,7 @@ import { MainCarouselData } from './MainCarouselData';
 const MainCarousel = () => {
     const items = (
         MainCarouselData).map((data) =>
-            <img className='cursor-pointer -z-10 object-fill'
+            <img className='cursor-pointer w-full -z-10 object-fill'
                 onClick={() => { console.log('click') }}
                 role='presentation'
                 src={data.image} alt=''
@@ -13,6 +13,7 @@ const MainCarousel = () => {
         );
 
     return (
+        
         <AliceCarousel
             autoPlay
             infinite
