@@ -162,8 +162,8 @@ export default function ProductDetails() {
                             <div className="mt-6">
                                 <div className='flex items-center space-x-3'>
                                     <Rating name="read-only" value={5.5} readOnly />
-                                    <p className='opacity-50 text-sm'>763 Ratings</p>
-                                    <p className='ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-600'>538703 Reviews</p>
+                                    <p className='opacity-50 text-sm'>10 Ratings</p>
+                                    <p className='ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-600'>5 Reviews</p>
                                 </div>
                             </div>
 
@@ -269,7 +269,7 @@ export default function ProductDetails() {
                                 <h1 className='text-xl font-semibold pb-2'>Product Ratings</h1>
                                 <div className='flex items-center space-x-3'>
                                     <Rating name='read-only' value={4.6} precision={0.5} readOnly />
-                                    <p className='opactiy-60'>4398 Ratings</p>
+                                    <p className='opactiy-60'>5 Ratings</p>
                                 </div>
                                 <Box className='mt-5 space-y'>
                                     <Grid container gap={2} alignItems={'center'}>

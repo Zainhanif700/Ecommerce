@@ -1,29 +1,35 @@
-import Button from "@mui/material/Button"
-import CartItem from "./CartItem.jsx"
+import Button from "@mui/material/Button";
+import CartItem from "./CartItem.jsx";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getCart } from '../../State/Cart/Action.js';
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Cart = () => {
-
     const [updateCart, setUpdateCart] = useState(false);
+    const [loading, setLoading] = useState(true); // Loading state
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { cart } = useSelector((store) => store);
 
     const handleCheckout = () => {
-        navigate('/checkout?step=2')
-    }
+        navigate('/checkout?step=2');
+    };
 
     useEffect(() => {
-        dispatch(getCart());
-    }, [updateCart])
+        setLoading(true); // Start loading
+        dispatch(getCart()).then(() => setLoading(false)); // Stop loading after fetching
+    }, [updateCart]);
 
     return (
         <>
-            {cart?.cart?.cartItems?.length > 0 ? (
+            {loading ? (
+                <div className="flex justify-center items-center h-[50vh]">
+                    <CircularProgress />
+                </div>
+            ) : cart?.cart?.cartItems?.length > 0 ? (
                 <div>
                     <div className="lg:grid grid-cols-3 lg:px-16 relative">
                         {/* Cart Items Section */}
@@ -53,7 +59,7 @@ const Cart = () => {
                                     <div className="flex justify-between pt-3 px-2 text-black">
                                         <span>Discount</span>
                                         <span className="text-green-600">
-                                            -${cart.cart.totalPrice-cart.cart.totalDiscountedPrice || 0}
+                                            -${cart.cart.totalDiscountedPrice || 0}
                                         </span>
                                     </div>
                                     <div className="flex justify-between pt-3 px-2 text-black">
@@ -64,7 +70,7 @@ const Cart = () => {
                                     <div className="flex justify-between pt-2 px-2 text-black">
                                         <span>Total Amount</span>
                                         <span className="text-green-600">
-                                            ${cart.cart.totalDiscountedPrice}
+                                            ${cart.cart.totalPrice-cart.cart.totalDiscountedPrice}
                                         </span>
                                     </div>
                                 </div>
@@ -85,11 +91,10 @@ const Cart = () => {
                     </div>
                 </div>
             ) : (
-                <div className="flex justify-center items-center text-xl ">No Items In The Cart</div>
+                <div className="flex justify-center items-center text-xl h-[50vh]">No Items In The Cart</div>
             )}
         </>
     );
-    
-}
+};
 
-export default Cart
+export default Cart;
