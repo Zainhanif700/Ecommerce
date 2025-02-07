@@ -53,8 +53,6 @@ function HomePage() {
 
   },[])
 
-  console.log(product)
-
   return (
     <>
       <div >

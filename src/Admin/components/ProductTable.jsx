@@ -9,7 +9,7 @@ const ProductTable = () => {
 
   useEffect(() => {
     const data = {
-      category: 'Lamps',
+      category: 'all',
       colors: [],
       sizes: [],
       minPrice: 0,
