@@ -9,7 +9,7 @@ const ProductTableView = () => {
 
   useEffect(() => {
     const data = {
-      category: "t-shirts",
+      category: "all",
       colors: [],
       sizes: [],
       minPrice: 0,

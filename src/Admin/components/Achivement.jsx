@@ -1,5 +1,6 @@
 import { Button, Card, CardContent, styled, Typography } from '@mui/material'
 import Img from '../../../public/trophy.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const TriangleImg = styled("img")({
     right: 0,
@@ -16,6 +17,9 @@ const TropyImg = styled('img')({
 })
 
 function Achivement() {
+    
+    const navigate = useNavigate();
+
     return (
         <Card className='space-y-5' sx={{ position: 'relative',}}>
             <CardContent>
@@ -26,9 +30,9 @@ function Achivement() {
                     Congratulations 
                 </Typography>
                 <Typography variant='h5' sx={{my:3.1}}>
-                    420.8k
+                    10 Sales
                 </Typography>
-                <Button size='small' variant='contained'>View Sales</Button>
+                <Button size='small' variant='contained' onClick={()=>navigate(`/admin/orders`)}>View Sales</Button>
                 <TriangleImg src={Img}></TriangleImg>
                 <TropyImg src='' />
             </CardContent>
