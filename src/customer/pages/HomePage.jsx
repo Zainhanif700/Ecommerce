@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import MainCarousel from "../components/HomeCarousel/MainCarousel"
 import HomeSectionCarousel from "../components/HomeSectionCarousel/HomeSectionCarousel"
-import { mens_kurta } from '../Data/mens_kurta';
 import { findProducts, findProductsByBrands, findProductsByDecoration, findProductsByFurniture } from "../../State/Product/Action";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -9,6 +8,7 @@ function HomePage() {
 
   const { product } = useSelector((state) => state); 
   const dispatch = useDispatch();
+  
   const dataForFuniture = {
     category: "Sofas",
     colors: [],
