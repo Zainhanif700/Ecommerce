@@ -31,12 +31,12 @@ const CartItem = ({ item, updateCart, setUpdateCart, summary = false }) => {
                 <div className="ml-5 space-y-1">
                     <p className="font-semibold">{item?.product?.title}</p>
                     <p className="opacity-70">Size: {item?.size ? item?.size : 'M'}, {item?.product?.color}</p>
-                    <p className="opacity-70 mt-2">Seller: {item?.product?.brand ?? '---'}</p>
+                    <p className="opacity-70 mt-2">Seller: LowtechGmbh</p>
 
                     <div className="mt-4 lg:row-span-3 lg:mt-0">
                         <h2 className="sr-only">Product information</h2>
                         <div className="flex space-x-5 items-center text-lg text-gray-900 pt-6">
-                            <p className="font-semibold">${item?.price - item?.discountedPrice}</p>
+                            <p className="font-semibold">${ item?.discountedPrice}</p>
                             <p className="opacity-50 line-through">{item?.price}</p>
                             <p className="text-green-600 font-semibold">{item?.product?.discountedPersent}% Off</p>
                         </div>

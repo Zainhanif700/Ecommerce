@@ -7,25 +7,25 @@ import { Avatar, Box, Card, CardContent, CardHeader, Grid, IconButton, Typograph
 
 const saleData = [
   {
-    stats: '245k',
+    stats: '24',
     title:'Sales',
     color:'#E8BD0D',
     icon: <TrendingUpIcon sx={{fontSize:'1.75rem'}}/>
   },
   {
-    stats: '12.5k',
+    stats: '12.5',
     title:'Customers',
     color:'#22CB5C',
     icon: <AccountCircleIcon sx={{fontSize:'1.75rem'}}/>
   },
   {
-    stats: '1.54k',
+    stats: '1.54',
     title:'Products',
     color:'#DE4839',
     icon: <SettingsCellIcon sx={{fontSize:'1.75rem'}}/>
   },
   {
-    stats: '88k',
+    stats: '88',
     title:'Revenue',
     color:'#12B0E8',
     icon: <AttachMoneyIcon sx={{fontSize:'1.75rem'}}/>
@@ -69,8 +69,8 @@ function MonthlyOverview() {
         }
         subheader={
           <Typography variant='body2'>
-            <Box component="span" sx={{fontWeight:600 }}>
-                Total 48.5% growth
+            <Box component="span" sx={{fontWeight:600, paddingRight:"1px" }}>
+                Total 18.5% growth 
             </Box>
             this month
           </Typography>

@@ -4,7 +4,7 @@ const HomeSectionCard = ({ product, keys }) => {
   const navigate = useNavigate();
   return (
     <>
-      <div onClick={() => { navigate(`/product/${keys}`); console.log(keys) }} className='productCard w-[15rem] m-3 transition-all cursor-pointer'>
+      <div onClick={() => { navigate(`/product/${keys}`); console.log(keys)}} className='productCard w-[15rem] m-3 transition-all cursor-pointer'>
         <div className="cursor-pointer m-2 border flex flex-col bg-white rounded-lg shadow-lg overflow-hidden items-center w-[15rem]">
           <div className="h-[13rem] w-[10rem]">
             <img className="object-cover object-top w-full h-full" src={product?.imageUrl} alt="" />
