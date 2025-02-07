@@ -36,7 +36,7 @@ const CartItem = ({ item, updateCart, setUpdateCart, summary = false }) => {
                     <div className="mt-4 lg:row-span-3 lg:mt-0">
                         <h2 className="sr-only">Product information</h2>
                         <div className="flex space-x-5 items-center text-lg text-gray-900 pt-6">
-                            <p className="font-semibold">${ item?.price-item?.discountedPrice}</p>
+                            <p className="font-semibold">${ item?.discountedPrice}</p>
                             <p className="opacity-50 line-through">{item?.price}</p>
                             <p className="text-green-600 font-semibold">{item?.product?.discountedPersent}% Off</p>
                         </div>
