@@ -14,10 +14,8 @@ function Order() {
         dispatch(getCurrentOrder())
     }, [])
 
-    console.log(order?.orders?.length)
-
     return (
-        <div onClick={() => { navigate(`/account/order/${5}`) }} className="px-5 lg:px-20">
+        <div className="px-5 lg:px-20">
             <Grid item xs={9}>
                 <div className="space-y-5">
                     {order?.orders?.map((order) => <OrderCard order={order}/>)}
