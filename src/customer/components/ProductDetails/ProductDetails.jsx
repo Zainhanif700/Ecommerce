@@ -19,8 +19,10 @@ export default function ProductDetails() {
     const navigate = useNavigate();
     const params = useParams();
     const jwt = localStorage?.getItem("jwt");
-    const [selectedSize, setSelectedSize] = useState();
+    
+    const [selectedSize, setSelectedSize] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [addingToCart, setAddingToCart] = useState(false); // Track Add to Cart loading
 
     const handleAddToCart = () => {
         if (!selectedSize) {
@@ -28,14 +30,17 @@ export default function ProductDetails() {
             return;
         }
 
+        setAddingToCart(true);
+
         const data = { productId: params.productId, size: selectedSize?.name };
-        dispatch(addItemToCart(data));
-        
-        if (jwt) {
-            navigate('/cart');
-        } else {
-            toast.error("Please Login First");
-        }
+        dispatch(addItemToCart(data)).then(() => {
+            setAddingToCart(false);
+            if (jwt) {
+                navigate('/cart');
+            } else {
+                toast.error("Please Login First");
+            }
+        });
     };
 
     useEffect(() => {
@@ -90,15 +95,9 @@ export default function ProductDetails() {
                             {/* Pricing */}
                             <div className="mt-4 lg:row-span-3 lg:mt-0">
                                 <div className='flex space-x-5 items-center text-lg lg:text-xl text-gray-900 mt-6'>
-                                    <p className='font-semibold'>
-                                        {product.product?.discountedPrice}
-                                    </p>
-                                    <p className='opacity-50 line-through'>
-                                        {product.product?.price}
-                                    </p>
-                                    <p className='text-green-600 font-semibold'>
-                                        {product.product?.discountedPersent}%
-                                    </p>
+                                    <p className='font-semibold'>{product.product?.discountedPrice}</p>
+                                    <p className='opacity-50 line-through'>{product.product?.price}</p>
+                                    <p className='text-green-600 font-semibold'>{product.product?.discountedPersent}%</p>
                                 </div>
 
                                 {/* Reviews */}
@@ -123,60 +122,42 @@ export default function ProductDetails() {
                                                 <Radio
                                                     key={size.name}
                                                     value={size}
-                                                    className="group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium uppercase bg-white text-gray-900 shadow-sm hover:bg-gray-50"
+                                                    className={`group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium uppercase ${
+                                                        selectedSize?.name === size.name
+                                                            ? "bg-purple-500 text-white"
+                                                            : "bg-white text-black"
+                                                    }`}
                                                 >
                                                     <span>{size.name}</span>
                                                 </Radio>
                                             ))}
                                         </RadioGroup>
                                     </fieldset>
+
+                                    {/* Show Selected Size */}
+                                    {selectedSize && (
+                                        <p className="mt-3 text-green-600 font-semibold">
+                                            Selected Size: {selectedSize.name}
+                                        </p>
+                                    )}
                                 </div>
 
                                 {/* Add to Cart Button */}
-                                <Button 
-                                    variant='contained' 
-                                    onClick={handleAddToCart} 
+                                <Button
+                                    variant="contained"
+                                    onClick={handleAddToCart}
                                     sx={{ px: '2rem', py: '1rem', mt: '2rem', bgcolor: '#9155fd' }}
+                                    disabled={addingToCart} // Disable when loading
                                 >
-                                    Add to Cart
+                                    {addingToCart ? <CircularProgress size={24} color="inherit" /> : "ADD TO CART"}
                                 </Button>
                             </div>
 
                             {/* Description */}
                             <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
                                 <h3 className="sr-only">Description</h3>
-                                <div className="space-y-6">
-                                    <p className="text-base text-gray-900">{product.product?.description}</p>
-                                </div>
+                                <p className="text-base text-gray-900">{product.product?.description}</p>
                             </div>
-                        </div>
-                    </section>
-
-                    {/* Reviews & Ratings */}
-                    <section>
-                        <h1 className='font-semibold text-lg pb-4'>Recent Review & Rating</h1>
-                        <div className='border p-5'>
-                            <Grid container spacing={7}>
-                                <Grid item xs={7}>
-                                    <div className='space-y-5'>
-                                        {[1].map(() => <ProductReviewCard key={1} />)}
-                                    </div>
-                                </Grid>
-                                <Grid item xs={5}>
-                                    <h1 className='text-xl font-semibold pb-2'>Product Ratings</h1>
-                                    <Rating name='read-only' value={4.6} precision={0.5} readOnly />
-                                    <Box className='mt-5 space-y'>
-                                        <Grid container gap={2} alignItems={'center'}>
-                                            <Grid item xs={2}>
-                                                <p>Excellent</p>
-                                            </Grid>
-                                            <Grid item xs={7}>
-                                                <LinearProgress variant='determinate' value={60} color='success'></LinearProgress>
-                                            </Grid>
-                                        </Grid>
-                                    </Box>
-                                </Grid>
-                            </Grid>
                         </div>
                     </section>
                 </div>
