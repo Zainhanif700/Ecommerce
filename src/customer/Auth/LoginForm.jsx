@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Button, Grid, TextField, CircularProgress } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from "../../State/Auth/Action.js";
 
-function LoginForm() {
+function LoginForm({ handleClose }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
+    const { auth } = useSelector((store) => store);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -20,7 +21,12 @@ function LoginForm() {
         };
 
         await dispatch(login(userData));
-        setLoading(false); // Hide loading indicator after request
+        setLoading(false); // Hide loading indicator
+
+        if (auth?.user) {
+            handleClose(); // Close the modal after login
+            navigate('/dashboard'); // Redirect if necessary
+        }
     };
 
     return (
@@ -28,24 +34,10 @@ function LoginForm() {
             <form onSubmit={handleSubmit}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
-                        <TextField
-                            required
-                            id='email'
-                            name='email'
-                            label='Email'
-                            fullWidth
-                            autoComplete='email'
-                        />
+                        <TextField required id='email' name='email' label='Email' fullWidth autoComplete='email' />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <TextField
-                            required
-                            id='password'
-                            name='password'
-                            label='Password'
-                            fullWidth
-                            autoComplete='password'
-                        />
+                        <TextField required id='password' name='password' label='Password' fullWidth autoComplete='password' />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Button 
