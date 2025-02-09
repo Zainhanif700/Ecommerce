@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 import { getOrderById } from "../../../State/Order/Action.js";
 import { createPayment } from "../../../State/Payment/Action.js";
 import { removeItemToCart } from "../../../State/Cart/Action.js";
+import { toast } from "react-toastify";
 
 function OrderSummary() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function OrderSummary() {
 
   const handleCheckout = async () => {
     setCheckoutLoading(true);
+
     const data = {
       quantity: 1,
       amount: (order?.orders?.totalPrice - order?.orders?.totalDiscountedPrice) * 100,
@@ -38,9 +40,16 @@ function OrderSummary() {
       for (let i = 0; i < cart?.cartItems?.length; i++) {
         await dispatch(removeItemToCart(cart?.cartItems?.[i].id));
       }
+
       await dispatch(createPayment(orderId, data));
+
+      toast.success("Payment Successful! Redirecting...");
+      setTimeout(() => {
+        window.location.href = "/checkout-success"; // Redirect after success
+      }, 2000);
     } catch (error) {
       console.error("Payment processing failed:", error);
+      toast.error("Payment failed! Please try again.");
     } finally {
       setCheckoutLoading(false);
     }
@@ -90,6 +99,7 @@ function OrderSummary() {
                     </div>
                   </div>
                 </div>
+                {/* Checkout Button with Loading Spinner */}
                 <Button
                   variant="contained"
                   onClick={handleCheckout}
@@ -97,7 +107,7 @@ function OrderSummary() {
                   sx={{ px: "2.5rem", py: ".7rem", bgcolor: "#9155fd" }}
                   disabled={checkoutLoading}
                 >
-                  {checkoutLoading ? <CircularProgress size={24} color="inherit" /> : "Checkout"}
+                  {checkoutLoading ? <CircularProgress size={24} color="inherit" /> : "CHECKOUT"}
                 </Button>
               </div>
             </div>
