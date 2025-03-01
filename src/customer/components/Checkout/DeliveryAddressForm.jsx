@@ -1,19 +1,23 @@
+import { useState } from "react";
 import Grid from "@mui/material/Grid";
 import AddressCard from "../AddressCard/AddressCard";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import CircularProgress from "@mui/material/CircularProgress";
 import { useDispatch } from "react-redux";
-import {createOrder} from '../../../State/Order/Action.js';
+import { createOrder } from '../../../State/Order/Action.js';
 import { useNavigate } from "react-router-dom";
 
 function DeliveryAddressForm() {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false); // Loading state
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
+
     const data = new FormData(e.currentTarget);
     const address = {
       firstName: data.get('firstName'),
@@ -23,10 +27,18 @@ function DeliveryAddressForm() {
       state: data.get('state'),
       zipCode: data.get('zipCode'),
       mobile: data.get('phoneNumber'),
+    };
+
+    const orderData = { address, navigate };
+    
+    try {
+      await dispatch(createOrder(orderData));
+    } catch (error) {
+      console.error("Order submission failed:", error);
+    } finally {
+      setLoading(false); // Stop loading
     }
-    const orderData = {address, navigate};
-    dispatch(createOrder(orderData));
-  }
+  };
 
   return (
     <Grid container spacing={4}>
@@ -56,17 +68,22 @@ function DeliveryAddressForm() {
                 <TextField required id="phoneNumber" name="phoneNumber" label='Phone Number' fullWidth autoComplete="given-name" />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Button sx={{ py: 1, mt: 2, bgcolor: 'RGB(145 85 253)' }} type='submit' size='large' variant="contained">
-                  Deliver Here
+                <Button
+                  sx={{ py: 1, mt: 2, bgcolor: 'RGB(145 85 253)' }}
+                  type='submit'
+                  size='large'
+                  variant="contained"
+                  disabled={loading} // Disable button while loading
+                >
+                  {loading ? <CircularProgress size={24} color="inherit" /> : "Deliver Here"}
                 </Button>
               </Grid>
-
             </Grid>
           </form>
         </Box>
       </Grid>
     </Grid>
-  )
+  );
 }
 
 export default DeliveryAddressForm;

@@ -1,8 +1,10 @@
-import { Box, Modal } from '@mui/material'
+import { Box, Modal } from '@mui/material';
 import RegisterForm from './RegisterForm';
 import { useLocation } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import VerifyForm from './VerifyForm';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const style = {
     position: 'absolute',
@@ -18,6 +20,15 @@ const style = {
 
 function AuthModal({ handleClose, open }) {
     const location = useLocation();
+    const { auth } = useSelector((store) => store);
+
+    // Close modal when user is logged in
+    useEffect(() => {
+        if (auth?.user) {
+            handleClose();
+        }
+    }, [auth?.user, handleClose]);
+
     return (
         <div>
             <Modal
@@ -27,14 +38,15 @@ function AuthModal({ handleClose, open }) {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    {
-                        location.pathname ==="/login" || location.pathname ==="/"? <LoginForm/>: location.pathname ==="/verify"? <VerifyForm/> : <RegisterForm/>
-                    }
+                    {location.pathname === "/login" || location.pathname === "/"
+                        ? <LoginForm handleClose={handleClose} />
+                        : location.pathname === "/verify"
+                        ? <VerifyForm />
+                        : <RegisterForm />}
                 </Box>
             </Modal>
         </div>
-
-    )
+    );
 }
 
-export default AuthModal
+export default AuthModal;
