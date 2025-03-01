@@ -16,6 +16,6 @@ export default defineConfig({
     watch: {
       usePolling: true,
     },
-    allowedHosts: ['lowtechgmbh-frontend-a5a6gvdafpfagqc9.germanywestcentral-01.azurewebsites.net', '*'],
+    allowedHosts: ['lowtechgmbh-d4hbh6dqcza7b0bf.germanywestcentral-01.azurewebsites.net', '*'],
   },
 })
