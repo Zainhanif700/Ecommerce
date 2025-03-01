@@ -137,6 +137,66 @@ function CreateProductForm() {
             <TextField fullWidth label="Discount Percentage" name="discountPersent" value={productData.discountPersent} onChange={handleChange} type="number" />
           </Grid>
 
+
+          <Grid item xs={6} sm={4}>
+            <FormControl fullWidth>
+              <InputLabel>Top Level Category</InputLabel>
+              <Select
+                name='topLavelCategory'
+                value={productData.topLavelCategory}
+                onChange={handleChange}
+                label='Top Level Category'
+              >
+                <MenuItem value="men">Men</MenuItem>
+                <MenuItem value="women">Women</MenuItem>
+                <MenuItem value="kids">Kids</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={6} sm={4}>
+            <FormControl fullWidth>
+              <InputLabel>Second Level Category</InputLabel>
+              <Select
+                name='secondLavelCategory'
+                value={productData.secondLavelCategory}
+                onChange={handleChange}
+                label='Second Level Category'
+              >
+                <MenuItem value="clothing">Clothing</MenuItem>
+                <MenuItem value="accessories">Accessories</MenuItem>
+                <MenuItem value="brands">Brands</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={6} sm={4}>
+            <FormControl fullWidth>
+              <InputLabel>Third Level Category</InputLabel>
+              <Select
+                name='thirdLavelCategory'
+                value={productData.thirdLavelCategory}
+                onChange={handleChange}
+                label='Third Level Category'
+              >
+                <MenuItem value="Modern Home">Modern Home</MenuItem>
+                <MenuItem value="Rustic Charm">Rustic Charm</MenuItem>
+                <MenuItem value="Urban Living">Urban Living</MenuItem>
+                <MenuItem value="EcoStyle">EcoStyle</MenuItem>
+                <MenuItem value="Rugs">Rugs</MenuItem>
+                <MenuItem value="Lamps">Lamps</MenuItem>
+                <MenuItem value="Wall Art">Wall Art</MenuItem>
+                <MenuItem value="Mirrors">Mirrors</MenuItem>
+                <MenuItem value="Cushions">Cushions</MenuItem>
+                <MenuItem value="Sofas">Sofas</MenuItem>
+                <MenuItem value="Chairs">Chairs</MenuItem>
+                <MenuItem value="Beds">Beds</MenuItem>
+                <MenuItem value="Cabinets">Cabinets</MenuItem>
+                <MenuItem value="Outdoor Furniture">Outdoor Furniture</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+
           <Grid item xs={12}>
             <TextField fullWidth label="Description" multiline rows={3} name="description" value={productData.description} onChange={handleChange} />
           </Grid>
