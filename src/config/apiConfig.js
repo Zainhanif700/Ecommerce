@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_BASE_URL = "https://lowtechgbmh-backend-c3e0ckfdf7e2fmac.canadacentral-01.azurewebsites.net.azurewebsites.net";
+export const API_BASE_URL = "https://lowtechgbmh-backend-c3e0ckfdf7e2fmac.canadacentral-01.azurewebsites.net";
 // export const API_BASE_URL = "http://localhost:8080";
 
 const jwt = localStorage.getItem('jwt');
