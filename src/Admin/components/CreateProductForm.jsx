@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createProduct } from '../../State/Product/Action.js';
 import {
   Button, FormControl, Grid, InputLabel, MenuItem, Select,
@@ -23,14 +23,14 @@ function CreateProductForm() {
     discountPersent: '',
     size: initialSizes,
     quantity: '',
-    topLavelCategory: '',
-    secondLavelCategory: '',
+    topLavelCategory: 'Furniture',
+    secondLavelCategory: 'Home',
     thirdLavelCategory: '',
     description: '',
   });
 
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false); // Loading state
+  const [loading, setLoading] = useState(false);
 
   const [selectedImage, setSelectedImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
@@ -87,6 +87,23 @@ function CreateProductForm() {
 
     try {
       await dispatch(createProduct(formData));
+      setProductData({
+        imageUrl: '',
+        brand: '',
+        title: '',
+        color: '',
+        discountedPrice: '',
+        price: '',
+        discountPersent: '',
+        size: initialSizes,
+        quantity: '',
+        topLavelCategory: 'Furniture',
+        secondLavelCategory: 'Home',
+        thirdLavelCategory: '',
+        description: '',
+      })
+      selectedImage(null);
+      setImagePreview(null);
     } catch (error) {
       console.error('Product creation failed:', error);
     } finally {
@@ -137,42 +154,9 @@ function CreateProductForm() {
             <TextField fullWidth label="Discount Percentage" name="discountPersent" value={productData.discountPersent} onChange={handleChange} type="number" />
           </Grid>
 
-
-          <Grid item xs={6} sm={4}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
-              <InputLabel>Top Level Category</InputLabel>
-              <Select
-                name='topLavelCategory'
-                value={productData.topLavelCategory}
-                onChange={handleChange}
-                label='Top Level Category'
-              >
-                <MenuItem value="men">Men</MenuItem>
-                <MenuItem value="women">Women</MenuItem>
-                <MenuItem value="kids">Kids</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-
-          <Grid item xs={6} sm={4}>
-            <FormControl fullWidth>
-              <InputLabel>Second Level Category</InputLabel>
-              <Select
-                name='secondLavelCategory'
-                value={productData.secondLavelCategory}
-                onChange={handleChange}
-                label='Second Level Category'
-              >
-                <MenuItem value="clothing">Clothing</MenuItem>
-                <MenuItem value="accessories">Accessories</MenuItem>
-                <MenuItem value="brands">Brands</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-
-          <Grid item xs={6} sm={4}>
-            <FormControl fullWidth>
-              <InputLabel>Third Level Category</InputLabel>
+              <InputLabel>Select Category</InputLabel>
               <Select
                 name='thirdLavelCategory'
                 value={productData.thirdLavelCategory}

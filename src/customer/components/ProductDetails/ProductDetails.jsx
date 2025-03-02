@@ -95,8 +95,8 @@ export default function ProductDetails() {
                             {/* Pricing */}
                             <div className="mt-4 lg:row-span-3 lg:mt-0">
                                 <div className='flex space-x-5 items-center text-lg lg:text-xl text-gray-900 mt-6'>
-                                    <p className='font-semibold'>{product.product?.discountedPrice}</p>
-                                    <p className='opacity-50 line-through'>{product.product?.price}</p>
+                                    <p className='font-semibold'>{product.product?.discountedPrice}$</p>
+                                    <p className='opacity-50 line-through'>{product.product?.price}$</p>
                                     <p className='text-green-600 font-semibold'>{product.product?.discountedPersent}%</p>
                                 </div>
 
@@ -155,7 +155,7 @@ export default function ProductDetails() {
 
                             {/* Description */}
                             <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
-                                <h3 className="sr-only">Description</h3>
+                                <h3 className="font-bold">Description</h3>
                                 <p className="text-base text-gray-900">{product.product?.description}</p>
                             </div>
                         </div>

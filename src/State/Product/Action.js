@@ -7,6 +7,7 @@ import { CREATE_PRODUCT_FAILURE, FIND_PRODUCT_BY_DECORATION_REQUEST, FIND_PRODUC
     FIND_PRODUCT_BY_FURNITURE_FAILURE, CREATE_PRODUCT_REQUEST, CREATE_PRODUCT_SUCCESS, DELETE_PRODUCT_FAILURE, 
     DELETE_PRODUCT_REQUEST, DELETE_PRODUCT_SUCCESS, FIND_PRODUCT_BY_ID_FAILURE, FIND_PRODUCT_BY_ID_REQUEST, 
     FIND_PRODUCT_BY_ID_SUCCESS, FIND_PRODUCTS_FAILURE, FIND_PRODUCTS_REQUEST, FIND_PRODUCTS_SUCCESS } from "./ActionType"
+import { toast } from "react-toastify"
 
 export const findProducts = (reqData) => async (dispatch) => {
     dispatch({ type: FIND_PRODUCTS_REQUEST });
@@ -88,9 +89,11 @@ export const createProduct = (product) => async (dispatch) => {
     try {
         const { data } = await apiForm.post(`/api/admin/products/`, product)
         dispatch({ type: CREATE_PRODUCT_SUCCESS, payload: data })
+        toast.success("Product Added Successfully");
     }
     catch (error) {
         dispatch({ type: CREATE_PRODUCT_FAILURE, payload: error.message })
+        toast.error("Something Went Wrong");
     }
 }
 

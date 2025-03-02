@@ -59,22 +59,14 @@ function HomePage() {
 
   return (
     <>
-      {loading ? (
-        <div className="flex justify-center items-center h-[50vh]">
-          <CircularProgress />
+      <div >
+        <MainCarousel />
+        <div className="space-y-10 py-20 flex flex-col justify-center px-5 lg:px-10">
+          <HomeSectionCarousel data={product?.productsByFurniture?.content} sectionName={"Furniture"} />
+          <HomeSectionCarousel data={product?.productsByDecoration?.content} sectionName={"Decoration"} />
         </div>
-      ) : (
-        <div>
-          <MainCarousel />
-          <div className="space-y-10 py-20 flex flex-col justify-center px-5 lg:px-10">
-            <HomeSectionCarousel data={product?.productsByFurniture?.content} sectionName={"Furniture"} />
-            <HomeSectionCarousel data={product?.productsByDecoration?.content} sectionName={"Decoration"} />
-            <HomeSectionCarousel data={product?.productsByBrands?.content} sectionName={"Brand"} />
-          </div>
-        </div>
-      )}
+      </div>
     </>
-  );
+  )
 }
-
 export default HomePage;

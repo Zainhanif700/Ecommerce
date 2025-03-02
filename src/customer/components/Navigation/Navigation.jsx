@@ -342,8 +342,6 @@ export default function Example() {
               <div className="ml-auto flex items-center">
                 <div className="flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   {auth?.user?.firstName ? (
-
-
                     <div>
                       <Avatar
                         className="text-white"

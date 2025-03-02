@@ -59,7 +59,7 @@ const Cart = () => {
                                     <div className="flex justify-between pt-3 px-2 text-black">
                                         <span>Discount</span>
                                         <span className="text-green-600">
-                                            -${cart.cart.totalDiscountedPrice || 0}
+                                            - ${cart.cart.totalDiscountedPrice || 0}
                                         </span>
                                     </div>
                                     <div className="flex justify-between pt-3 px-2 text-black">
