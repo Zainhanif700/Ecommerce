@@ -362,11 +362,17 @@ export default function Product() {
                                     </div>
                                 </div>
                             ) : (
-                                <div className="w-full lg:col-span-4">
-                                    <div className='flex flex-wrap bg-white py-5 justify-center'>
-                                        {product?.products?.content?.map((item, index) => <ProductCard key={index} product={item} />)}
+                                product?.products?.content.length == 0 ? (
+                                    <div>
+                                        No items available right now
                                     </div>
-                                </div>
+                                ) : (
+                                    <div className="w-full lg:col-span-4">
+                                        <div className='flex flex-wrap bg-white py-5 justify-center'>
+                                            {product?.products?.content?.map((item, index) => <ProductCard key={index} product={item} />)}
+                                        </div>
+                                    </div>
+                                )
                             )}
 
                         </div>
@@ -376,14 +382,6 @@ export default function Product() {
                             <Pagination count={product?.products?.totalPages} onChange={handlePaginationChange} color="secondary" />
                         </div>
                     </section>
-
-
-
-
-
-
-
-
                 </main>
             </div>
         </div >

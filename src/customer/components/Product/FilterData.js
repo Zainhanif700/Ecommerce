@@ -41,7 +41,7 @@ export const singleFilter = [
             { value: "399-999", label: "$399 To $999" },
             { value: "999-1999", label: "$999 To $1999" },
             { value: "1999-2999", label: "$1999 To $2999" },
-            { value: "3999-4999", label: "$3999 To $4999" }
+            { value: "3999-4999", label: "$3999 To $4999" },
         ]
     },
     {

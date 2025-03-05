@@ -62,7 +62,7 @@ const navigation = {
           id: 'brands',
           name: 'Brands',
           items: [
-            { name: 'Modern Home', href: '#' },
+            { name: 'Modern Houses', href: '#' },
             { name: 'Rustic Charm', href: '#' },
             { name: 'Urban Living', href: '#' },
             { name: 'EcoStyle', href: '#' },
@@ -244,7 +244,7 @@ export default function Example() {
                   <span className="sr-only">Company</span>
                   <img
                     alt=""
-                    src="https://lowtechgmbhstorage.blob.core.windows.net/lowtechgmbh-blob/Screenshot 2025-02-06 193950.png"
+                    src="https://lowtechgmbhblob.blob.core.windows.net/lowtechgmbhblobcontainer/logo.png"
                     className="h-8 w-auto"
                   />
                 </a>

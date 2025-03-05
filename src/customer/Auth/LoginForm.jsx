@@ -37,7 +37,7 @@ function LoginForm({ handleClose }) {
                         <TextField required id='email' name='email' label='Email' fullWidth autoComplete='email' />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <TextField required id='password' name='password' label='Password' fullWidth autoComplete='password' />
+                        <TextField required id='password' type='password' name='password' label='Password' fullWidth autoComplete='password' />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Button 

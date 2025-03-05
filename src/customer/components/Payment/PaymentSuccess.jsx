@@ -25,8 +25,6 @@ const PaymentSuccess = () => {
         dispatch(getOrderById(orderId))
     }, [orderId, paymentId])
 
-    console.log(order?.orders?.user?.email)
-
     return (
         <div className='px-2 lg:px-36'>
             <div className='flex flex-col justify-center items-center'>
@@ -52,8 +50,8 @@ const PaymentSuccess = () => {
                                         <span>Color: {item.color??'Black'}</span>
                                         <span>Size: {item.size}</span>
                                     </div>
-                                    <p>Seller: {item?.product?.brand?? 'xxxx'}</p>
-                                    <p>${item.price-item.discountedPrice}</p>
+                                    <p>Seller: {item?.product?.brand?? 'Lowtech gmbh'}</p>
+                                    <p>${item.discountedPrice}</p>
                                 </div>
                             </div>
                         </Grid>
